@@ -11,5 +11,6 @@
 
     <!-- Specify the app servlets.                   -->
     <servlet path='/MyApplicationService' class='com.myApplication.server.MyApplicationServiceImpl'/>
+    test jenkins
 
 </module>
