@@ -15,7 +15,7 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.1</gwtVersion>
-        <gae.version>1.7.3</gae.version>
+        <gae.version>1.8.5</gae.version>
 
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
@@ -63,9 +63,20 @@
         </dependency>
     </dependencies>
 
+
     <build>
-        <!-- Generate compiled stuff in the folder used for developing mode -->
+        <finalName>${project.artifactId}</finalName>
+
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <!-- <testSourceDirectory>${basedir}/test/main/java</testSourceDirectory> -->
+
         <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+        <!-- Generate compiled stuff in the folder used for developing mode -->
 
         <plugins>
 
@@ -137,5 +148,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
