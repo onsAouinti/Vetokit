@@ -2,33 +2,64 @@
 
 
 /** Example rules used by the template application (remove for your app) */
+body {
+    background-color: #EEEEEE !important;
+    padding-top: 0px !important;
+}
 h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 70px;
-  text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #777777;
+    margin: 40px 0px 70px;
+    text-align: center;
 }
 
 .sendButton {
-  display: block;
-  font-size: 16pt;
+    display: block;
+    font-size: 16pt;
 }
 
 /** Most GWT widgets already have a style name defined */
 .gwt-DialogBox {
-  width: 400px;
+    width: 400px;
 }
 
 .dialogVPanel {
-  margin: 5px;
+    margin: 5px;
 }
 
 .serverResponseLabelError {
-  color: red;
+    color: red;
 }
 
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
-  margin: 15px 6px 6px;
+    margin: 15px 6px 6px;
+}
+
+body #body {
+    background-color: #fff;
+    padding: 20px;
+    border-image:url('/img/img_border_body.png')  2 / 2px repeat;
+    background-clip: padding-box;
+}
+
+.gwt-Image-solid_opaque_bordered {
+    border: solid 3px rgba(119, 119, 119, 1.0);
+}
+
+.gwt-Image-solid_transparent_bordered {
+    border: solid 3px rgba(119, 119, 119, 0.0);
+}
+
+.modal-header {
+    background-color: #f9f9f9;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.modal-header h3 {
+    color: #555;
+    font-family: Arial Unicode MS, Arial, sans-serif;
 }

@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class vetokit implements EntryPoint {
+public class Vetokit implements EntryPoint {
   public void onModuleLoad() {
       final VetokitInjector ginjector = GWT.create(VetokitInjector.class);
 
