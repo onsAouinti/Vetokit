@@ -18,6 +18,10 @@ public class MenuViewImpl extends Composite implements MenuView {
 
     @UiField
     NavLink disconnectionNav;
+    @UiField
+    NavLink clientNav;
+    @UiField
+    NavLink homeNav;
 
     private Presenter presenter;
 
@@ -28,6 +32,16 @@ public class MenuViewImpl extends Composite implements MenuView {
     @Override
     public void setPresenter(final Presenter listener) {
         presenter = listener;
+    }
+
+    @UiHandler("clientNav")
+    public void clickOnClientNav(final ClickEvent event) {
+        presenter.goToClientPlace();
+    }
+
+    @UiHandler("homeNav")
+    public void clickOnHomeNav(final ClickEvent event) {
+        presenter.goToHomePlace();
     }
 
     @UiHandler("disconnectionNav")

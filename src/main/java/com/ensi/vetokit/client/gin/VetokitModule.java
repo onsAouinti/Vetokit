@@ -5,6 +5,8 @@ import com.ensi.vetokit.client.mvp.AppActivityMapper;
 import com.ensi.vetokit.client.mvp.AppPlaceController;
 import com.ensi.vetokit.client.mvp.AppPlaceHistoryMapper;
 import com.ensi.vetokit.client.place.HomePlace;
+import com.ensi.vetokit.client.view.client.ClientView;
+import com.ensi.vetokit.client.view.client.ClientViewImpl;
 import com.ensi.vetokit.client.view.home.HomeView;
 import com.ensi.vetokit.client.view.home.HomeViewImpl;
 import com.ensi.vetokit.client.view.menu.MenuView;
@@ -30,6 +32,7 @@ public class VetokitModule extends AbstractGinModule {
         bind(AppPlaceHistoryMapper.class).in(Singleton.class);
 
         bind(HomeView.class).to(HomeViewImpl.class).in(Singleton.class);
+        bind(ClientView.class).to(ClientViewImpl.class).in(Singleton.class);
         bind(MenuView.class).to(MenuViewImpl.class).in(Singleton.class);
     }
 

@@ -8,17 +8,7 @@ public interface AppMessages extends Messages {
     String titleHeader();
 
     // Menu
-    String menuPublishing();
-    String menuArchives();
-    String menuItems();
-    String menuProfiles();
-    String menuUsers();
-    String menuGroups();
-    String menuNewsletters();
-    String menuAddOns();
-    String menuStatistics();
+    String menuClient();
+    String menuHome();
     String menuDisconnection();
-    String menuMap();
-
-    String menuFrontOffice();
 }
