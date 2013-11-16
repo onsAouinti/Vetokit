@@ -18,7 +18,9 @@
         <gae.version>1.8.5</gae.version>
         <gin.version>2.0.0</gin.version>
         <guice.version>3.0</guice.version>
-        <gwt-bootstrap.version>2.0.4.0</gwt-bootstrap.version>
+        <gwt-bootstrap.version>2.2.1.0</gwt-bootstrap.version>
+        <gwt-cal.version>0.9.3.1</gwt-cal.version>
+        <gwt-dnd.version>3.1.2</gwt-dnd.version>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -71,6 +73,17 @@
             <artifactId>gwt-bootstrap</artifactId>
             <version>${gwt-bootstrap.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.bradrydzewski</groupId>
+            <artifactId>gwt-cal</artifactId>
+            <version>${gwt-cal.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.allen-sauer.gwt.dnd</groupId>
+            <artifactId>gwt-dnd</artifactId>
+            <version>${gwt-dnd.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

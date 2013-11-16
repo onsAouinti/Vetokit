@@ -21,6 +21,11 @@
     <inherits name="com.github.gwtbootstrap.Bootstrap" />
     <set-property name="bootstrap.responsiveDesign" value="true"/>
 
+    <!-- GWT-Calendar -->
+    <inherits name='com.bradrydzewski.gwt.calendar.Calendar' />
+    <inherits name='com.bradrydzewski.gwt.calendar.theme.google.Google' />
+    <inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
+
     <!-- I18N -->
     <inherits name="com.google.gwt.i18n.I18N" />
 
