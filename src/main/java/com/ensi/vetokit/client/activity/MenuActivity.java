@@ -3,6 +3,7 @@ package com.ensi.vetokit.client.activity;
 
 import com.ensi.vetokit.client.place.ClientPlace;
 import com.ensi.vetokit.client.place.HomePlace;
+import com.ensi.vetokit.client.place.OnsPlace;
 import com.ensi.vetokit.client.view.menu.MenuView;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
@@ -13,6 +14,8 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 
 public class MenuActivity extends AbstractActivity implements MenuView.Presenter {
+
+
 
     @Inject
     private PlaceController placeController;
@@ -26,28 +29,31 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
     @Inject
     private ClientPlace clientPlace;
 
-    @Override
+    @Inject
+    private OnsPlace onsPlace;
+
+
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
         view.setPresenter(this);
         panel.setWidget(view.asWidget());
     }
 
-    @Override
     public void goTo(final Place place) {
         placeController.goTo(place);
     }
 
-    @Override
     public void goToClientPlace() {
         goTo(clientPlace);
     }
 
-    @Override
+    public void goToOnsPlace() {
+        goTo(onsPlace);
+    }
+
     public void goToHomePlace() {
         goTo(homePlace);
     }
 
-    @Override
     public void disconnect() {
         Window.alert("Disconnected");
     }

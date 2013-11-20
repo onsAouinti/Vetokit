@@ -7,12 +7,12 @@ public class ClientPlace extends Place {
 
     public static class Tokenizer implements PlaceTokenizer<ClientPlace> {
 
-        @Override
+
         public String getToken(final ClientPlace place) {
             return "";
         }
 
-        @Override
+
         public ClientPlace getPlace(final String token) {
             return new ClientPlace();
         }

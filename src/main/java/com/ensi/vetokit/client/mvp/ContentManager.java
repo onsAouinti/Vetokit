@@ -18,7 +18,6 @@ public class ContentManager implements PlaceChangeEvent.Handler {
     @Inject
     private EventBus eventBus;
 
-    @Override
     public void onPlaceChange(final PlaceChangeEvent event) {
 
         final MenuActivity menuActivity = menuActivityProvider.get();
