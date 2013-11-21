@@ -24,7 +24,6 @@ public class ClientActivity extends AbstractActivity implements HasPlace, Client
 
     private ClientPlace place;
 
-
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
         view.setPresenter(this);
         panel.setWidget(view.asWidget());

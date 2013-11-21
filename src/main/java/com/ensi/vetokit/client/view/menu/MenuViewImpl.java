@@ -22,15 +22,12 @@ public class MenuViewImpl extends Composite implements MenuView {
     NavLink clientNav;
     @UiField
     NavLink homeNav;
-    @UiField
-    NavLink onsNav;
 
     private Presenter presenter;
 
     public MenuViewImpl() {
         initWidget(uiBinder.createAndBindUi(this));
     }
-
 
     public void setPresenter(final Presenter listener) {
         presenter = listener;
@@ -40,12 +37,6 @@ public class MenuViewImpl extends Composite implements MenuView {
     public void clickOnClientNav(final ClickEvent event) {
         presenter.goToClientPlace();
     }
-
-    @UiHandler("onsNav")
-    public void clickOnOnsNav(final ClickEvent event) {
-        presenter.goToOnsPlace();
-    }
-
 
     @UiHandler("homeNav")
     public void clickOnHomeNav(final ClickEvent event) {

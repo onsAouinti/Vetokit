@@ -4,6 +4,7 @@ import com.bradrydzewski.gwt.calendar.client.Appointment;
 import com.bradrydzewski.gwt.calendar.client.AppointmentStyle;
 import com.bradrydzewski.gwt.calendar.client.Calendar;
 import com.bradrydzewski.gwt.calendar.client.CalendarViews;
+import com.ensi.vetokit.client.view.socle.CalendarWidgetImpl;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -21,17 +22,17 @@ public class HomeViewImpl extends Composite implements HomeView {
 
     private Presenter presenter;
     @UiField
-    Calendar calendar;
+    CalendarWidgetImpl calendar;
 
     public HomeViewImpl() {
         initWidget(uiBinder.createAndBindUi(this));
-        Appointment appt = new Appointment();
+        /*Appointment appt = new Appointment();
         appt.setStart(new Date());
         appt.setEnd(new Date());
         appt.setTitle("First Appointment");
         appt.setStyle(AppointmentStyle.BLUE);
         calendar.setView(CalendarViews.DAY, 7);
-        calendar.addAppointment(appt);
+        calendar.addAppointment(appt);*/
     }
 
     public void setPresenter(final Presenter listener) {

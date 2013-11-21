@@ -22,19 +22,16 @@ public class HomeActivity extends AbstractActivity implements HasPlace, HomeView
 
     private HomePlace place;
 
-    @Override
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
         view.setPresenter(this);
         panel.setWidget(view.asWidget());
 
     }
 
-    @Override
     public void goTo(final Place place) {
         placeController.goTo(place);
     }
 
-    @Override
     public Activity setPlace(final Place place) {
         this.place = (HomePlace) place;
         return this;
