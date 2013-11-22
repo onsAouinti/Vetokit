@@ -3,10 +3,13 @@ package com.ensi.vetokit.client.view.socle;
 import com.bradrydzewski.gwt.calendar.client.*;
 import com.bradrydzewski.gwt.calendar.client.event.*;
 import com.ensi.vetokit.client.view.home.AppointmentBuilder;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.*;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Timer;
@@ -17,15 +20,28 @@ import com.google.gwt.user.datepicker.client.DatePicker;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CalendarWidgetImpl extends FlowPanel {
-    private Calendar calendar = null;
-    private DatePicker datePicker = new DatePicker();
-    private FlexTable layoutTable = new FlexTable();
-    private AbsolutePanel leftPanel = new AbsolutePanel();
-    private AbsolutePanel topPanel = new AbsolutePanel();
-    private DecoratorPanel dayViewDecorator = new DecoratorPanel();
-    private DecoratorPanel datePickerDecorator = new DecoratorPanel();
-    private DecoratedTabBar calendarViewsTabBar = new DecoratedTabBar();
+public class CalendarWidgetImpl extends Composite {
+    private static ViewImplUiBinder uiBinder = GWT.create(ViewImplUiBinder.class);
+
+    interface ViewImplUiBinder extends UiBinder<Widget, CalendarWidgetImpl> {
+    }
+
+    @UiField
+    protected Calendar calendar;
+    @UiField
+    protected DatePicker datePicker = new DatePicker();
+    @UiField
+    protected FlexTable layoutTable = new FlexTable();
+    @UiField
+    protected AbsolutePanel leftPanel = new AbsolutePanel();
+    @UiField
+    protected AbsolutePanel topPanel = new AbsolutePanel();
+    @UiField
+    protected DecoratorPanel dayViewDecorator = new DecoratorPanel();
+    @UiField
+    protected DecoratorPanel datePickerDecorator = new DecoratorPanel();
+    @UiField
+    protected DecoratedTabBar calendarViewsTabBar = new DecoratedTabBar();
 
     final Button leftWeekButton = new Button("<b>&lt;</b>");
     final Button rightWeekButton = new Button("<b>&gt;</b>");
@@ -85,7 +101,7 @@ public class CalendarWidgetImpl extends FlowPanel {
         layoutTable.getCellFormatter().setVerticalAlignment(1, 1,
                 HasVerticalAlignment.ALIGN_TOP);
         layoutTable.getCellFormatter().setWidth(1, 0, "50px");
-        add(layoutTable);
+        //add(layoutTable);
 
         // window events to handle resizing
         Window.enableScrolling(false);
@@ -100,6 +116,7 @@ public class CalendarWidgetImpl extends FlowPanel {
             }
         });
         DOM.setStyleAttribute(getElement(), "padding", "10px");
+        initWidget(uiBinder.createAndBindUi(this));
     }
 
     /**
