@@ -1,6 +1,6 @@
 package com.ensi.vetokit.client.view.client;
 
-import com.ensi.vetokit.shared.Person;
+import com.ensi.vetokit.shared.dto.Client;
 import com.github.gwtbootstrap.client.ui.CellTable;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -18,7 +18,7 @@ public class ClientViewImpl extends Composite implements ClientView {
 
     private Presenter presenter;
 
-    private ListDataProvider<Person> dataProvider;
+    private ListDataProvider<Client> dataProvider;
 
     @UiField(provided = true)
     CellTable celltable ;
@@ -27,10 +27,10 @@ public class ClientViewImpl extends Composite implements ClientView {
     public ClientViewImpl() {
         initWidget(uiBinder.createAndBindUi(this));
 
-        Person person = new Person();
-        dataProvider.getList().add(person);
+        Client client = new Client();
+        dataProvider.getList().add(client);
 
-        dataProvider = new ListDataProvider<Person>();
+        dataProvider = new ListDataProvider<Client>();
         dataProvider.addDataDisplay(celltable);
     }
 

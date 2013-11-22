@@ -1,13 +1,9 @@
 package com.ensi.vetokit.client.view.ons;
 
-import com.ensi.vetokit.shared.Person;
-import com.github.gwtbootstrap.client.ui.CellTable;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.view.client.ListDataProvider;
 
 public class OnsViewImpl extends Composite implements OnsView {
 
