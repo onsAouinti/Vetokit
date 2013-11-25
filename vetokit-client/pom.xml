@@ -18,6 +18,11 @@
     <artifactId>vetokit-client</artifactId>
 
     <properties>
+        <gwt.module>com.ensi.vetokit.Vetokit</gwt.module>
+        <gwt.draftCompile>false</gwt.draftCompile>
+        <gwt.style>OBF</gwt.style>
+        <gwt.genParam>false</gwt.genParam>
+
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.1</gwtVersion>
         <gae.version>1.8.5</gae.version>
@@ -36,7 +41,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>vetokit-shared</artifactId>
             <version>${project.version}</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <!--<dependency>
             <groupId>${project.groupId}</groupId>
@@ -215,4 +220,28 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>draft</id>
+            <activation>
+                <property>
+                    <name>draft</name>
+                </property>
+            </activation>
+            <properties>
+                <gwt.module>com.ensi.vetokit.VetokitDev</gwt.module>
+                <gwt.draftCompile>true</gwt.draftCompile>
+                <gwt.style>PRETTY</gwt.style>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <property>
+                    <name>dev</name>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
+
 </project>
