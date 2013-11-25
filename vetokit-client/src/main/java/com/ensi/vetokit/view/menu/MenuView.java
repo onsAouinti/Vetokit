@@ -13,6 +13,6 @@ public interface MenuView extends IsWidget {
         void disconnect();
         void goToClientPlace();
         void goToHomePlace();
-        void goToOnsPlace();
+        void goToLaboratoirePlace();
     }
 }

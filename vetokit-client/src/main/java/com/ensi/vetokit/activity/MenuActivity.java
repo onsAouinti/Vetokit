@@ -3,7 +3,7 @@ package com.ensi.vetokit.activity;
 
 import com.ensi.vetokit.place.ClientPlace;
 import com.ensi.vetokit.place.HomePlace;
-import com.ensi.vetokit.place.OnsPlace;
+import com.ensi.vetokit.place.LabPlace;
 import com.ensi.vetokit.view.menu.MenuView;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
@@ -30,7 +30,7 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
     private ClientPlace clientPlace;
 
     @Inject
-    private OnsPlace onsPlace;
+    private LabPlace labPlace;
 
 
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
@@ -46,8 +46,8 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
         goTo(clientPlace);
     }
 
-    public void goToOnsPlace() {
-        goTo(onsPlace);
+    public void goToLaboratoirePlace() {
+        goTo(labPlace);
     }
 
     public void goToHomePlace() {

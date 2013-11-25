@@ -1,9 +1,9 @@
-package com.ensi.vetokit.view.ons;
+package com.ensi.vetokit.view.labs;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.IsWidget;
 
-public interface OnsView extends IsWidget {
+public interface LabView extends IsWidget {
 
     void setPresenter(Presenter listener);
 

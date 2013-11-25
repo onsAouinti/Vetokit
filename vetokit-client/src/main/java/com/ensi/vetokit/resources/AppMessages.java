@@ -11,5 +11,5 @@ public interface AppMessages extends Messages {
     String menuClient();
     String menuHome();
     String menuDisconnection();
-    String menuOns();
+    String menuLaboratory();
 }

@@ -9,10 +9,10 @@ import com.ensi.vetokit.view.client.ClientView;
 import com.ensi.vetokit.view.client.ClientViewImpl;
 import com.ensi.vetokit.view.home.HomeView;
 import com.ensi.vetokit.view.home.HomeViewImpl;
+import com.ensi.vetokit.view.labs.LabView;
+import com.ensi.vetokit.view.labs.LabViewImpl;
 import com.ensi.vetokit.view.menu.MenuView;
 import com.ensi.vetokit.view.menu.MenuViewImpl;
-import com.ensi.vetokit.view.ons.OnsView;
-import com.ensi.vetokit.view.ons.OnsViewImpl;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.event.shared.EventBus;
@@ -35,7 +35,7 @@ public class VetokitModule extends AbstractGinModule {
 
         bind(HomeView.class).to(HomeViewImpl.class).in(Singleton.class);
         bind(ClientView.class).to(ClientViewImpl.class).in(Singleton.class);
-        bind(OnsView.class).to(OnsViewImpl.class).in(Singleton.class);
+        bind(LabView.class).to(LabViewImpl.class).in(Singleton.class);
         bind(MenuView.class).to(MenuViewImpl.class).in(Singleton.class);
     }
 

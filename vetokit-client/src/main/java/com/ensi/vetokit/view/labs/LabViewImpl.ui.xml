@@ -3,10 +3,15 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
     <ui:style>
+        .cellTable {
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+            margin-bottom: 4px;
+        }
+
 
     </ui:style>
     <g:HTMLPanel>
-        onnnnnsssssssss waw :D
-
+        <b:CellTable addStyleNames='{style.cellTable}' pageSize='15' ui:field='laborList' />
     </g:HTMLPanel>
 </ui:UiBinder>

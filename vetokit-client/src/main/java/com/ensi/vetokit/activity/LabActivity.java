@@ -1,8 +1,8 @@
 package com.ensi.vetokit.activity;
 
 import com.ensi.vetokit.mvp.HasPlace;
-import com.ensi.vetokit.place.OnsPlace;
-import com.ensi.vetokit.view.ons.OnsView;
+import com.ensi.vetokit.place.LabPlace;
+import com.ensi.vetokit.view.labs.LabView;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.event.shared.EventBus;
@@ -11,15 +11,15 @@ import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 
-public class OnsActivity extends AbstractActivity implements HasPlace, OnsView.Presenter {
+public class LabActivity extends AbstractActivity implements HasPlace, LabView.Presenter {
 
     @Inject
-    private OnsView view;
+    private LabView view;
 
     @Inject
     private PlaceController placeController;
 
-    private OnsPlace place;
+    private LabPlace place;
 
 
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
@@ -33,7 +33,7 @@ public class OnsActivity extends AbstractActivity implements HasPlace, OnsView.P
     }
 
     public Activity setPlace(final Place place) {
-        this.place = (OnsPlace) place;
+        this.place = (LabPlace) place;
         return this;
     }
 
