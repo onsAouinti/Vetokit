@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-        xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-    <!-- POM file generated with GWT webAppCreator -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.ensi.vetokit</groupId>
-    <artifactId>vetokit</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0</version>
-    <modules>
-        <module>vetokit-client</module>
-        <module>vetokit-shared</module>
-        <module>vetokit-server</module>
-    </modules>
-    <name>vetokit</name>
+
+    <parent>
+        <artifactId>vetokit</artifactId>
+        <groupId>com.ensi.vetokit</groupId>
+        <version>1.0</version>
+    </parent>
+    <packaging>war</packaging>
+
+    <prerequisites>
+        <maven>${mavenVersion}</maven>
+    </prerequisites>
+
+    <artifactId>vetokit-client</artifactId>
 
     <properties>
-        <mavenVersion>3.0</mavenVersion>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.1</gwtVersion>
         <gae.version>1.8.5</gae.version>
@@ -28,11 +27,24 @@
         <gwt-cal.version>0.9.3.1</gwt-cal.version>
         <gwt-dnd.version>3.1.2</gwt-dnd.version>
         <!-- GWT needs at least java 1.5 -->
-        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
     </properties>
 
-    <!--<dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>vetokit-shared</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--<dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>vetokit-shared</artifactId>
+            <version>${project.version}</version>
+            <classifier>sources</classifier>
+            <scope>provided</scope>
+        </dependency>-->
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
@@ -45,14 +57,14 @@
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
-        &lt;!&ndash; ================ Dependency : Gin =========================== &ndash;&gt;
+        <!-- ================ Dependency : Gin =========================== -->
         <dependency>
             <groupId>com.google.gwt.inject</groupId>
             <artifactId>gin</artifactId>
             <version>${gin.version}</version>
         </dependency>
 
-        &lt;!&ndash; DI Guice &ndash;&gt;
+        <!-- DI Guice -->
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
@@ -73,7 +85,7 @@
             <artifactId>guice-persist</artifactId>
             <version>${guice.version}</version>
         </dependency>
-        &lt;!&ndash; ================ Dependencies : GWT-Bootstrap =========================== &ndash;&gt;
+        <!-- ================ Dependencies : GWT-Bootstrap =========================== -->
         <dependency>
             <groupId>com.github.gwtbootstrap</groupId>
             <artifactId>gwt-bootstrap</artifactId>
@@ -116,10 +128,10 @@
             <version>${gae.version}</version>
             <scope>test</scope>
         </dependency>
-    </dependencies>-->
+    </dependencies>
 
 
-   <!-- <build>
+    <build>
         <finalName>${project.artifactId}</finalName>
 
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
@@ -128,14 +140,14 @@
                 <directory>${basedir}/src/main/resources</directory>
             </resource>
         </resources>
-        &lt;!&ndash; <testSourceDirectory>${basedir}/test/main/java</testSourceDirectory> &ndash;&gt;
+        <!-- <testSourceDirectory>${basedir}/test/main/java</testSourceDirectory> -->
 
         <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-        &lt;!&ndash; Generate compiled stuff in the folder used for developing mode &ndash;&gt;
+        <!-- Generate compiled stuff in the folder used for developing mode -->
 
         <plugins>
 
-            &lt;!&ndash; GWT Maven Plugin &ndash;&gt;
+            <!-- GWT Maven Plugin -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
@@ -144,23 +156,23 @@
                     <execution>
                         <goals>
                             <goal>compile</goal>
-                            &lt;!&ndash;<goal>test</goal>&ndash;&gt;
+                            <!--<goal>test</goal>-->
                             <goal>i18n</goal>
                             <goal>generateAsync</goal>
                         </goals>
                     </execution>
                 </executions>
-                &lt;!&ndash; Plugin configuration. There are many available options, see
-                  gwt-maven-plugin documentation at codehaus.org &ndash;&gt;
+                <!-- Plugin configuration. There are many available options, see
+                  gwt-maven-plugin documentation at codehaus.org -->
                 <configuration>
                     <runTarget>vetokit.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
-                    &lt;!&ndash;<i18nMessagesBundle>com.ensi.vetokit.client.Messages</i18nMessagesBundle>&ndash;&gt;
+                    <i18nMessagesBundle>com.ensi.vetokit.Messages</i18nMessagesBundle>
                 </configuration>
             </plugin>
 
 
-            &lt;!&ndash; Copy static web files before executing gwt:run &ndash;&gt;
+            <!-- Copy static web files before executing gwt:run -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -192,15 +204,15 @@
                 <artifactId>maven-gae-plugin</artifactId>
                 <version>0.9.0</version>
                 <configuration>
-                    &lt;!&ndash;<tasks>
+                    <!--<tasks>
                         <echo>Displaying value of appengine.sdk.root</echo>
                         <echo>[appengine.sdk.root] ${appengine.sdk.root}</echo>
-                    </tasks> &ndash;&gt;
+                    </tasks> -->
                     <serverId>appengine.google.com</serverId>
                     <sdkDir>${appengine.sdk.root}</sdkDir>
                     <appDir>${basedir}/target/${project.artifactId}</appDir>
                 </configuration>
             </plugin>
         </plugins>
-    </build>-->
+    </build>
 </project>
