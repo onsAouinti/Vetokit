@@ -12,6 +12,6 @@
 
     </ui:style>
     <g:HTMLPanel>
-        <b:CellTable addStyleNames='{style.cellTable}' pageSize='15' ui:field='laborList' />
+        <b:CellTable addStyleNames='{style.cellTable}' pageSize='15' ui:field='labCellTable' />
     </g:HTMLPanel>
 </ui:UiBinder>

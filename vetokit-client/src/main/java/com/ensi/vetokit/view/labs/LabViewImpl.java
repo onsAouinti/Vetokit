@@ -1,5 +1,6 @@
 package com.ensi.vetokit.view.labs;
 
+import com.ensi.vetokit.dto.Laboratory;
 import com.github.gwtbootstrap.client.ui.CellTable;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
@@ -23,64 +24,67 @@ public class LabViewImpl extends Composite implements LabView {
     private Presenter presenter;
 
     @UiField(provided=true)
-    CellTable laborList;
+    CellTable labCellTable;
 
     private static final int LABS_PAGE_SIZE = 15;
 
-    private TextColumn<Laboratory> nameColumn;
-    private TextColumn<Laboratory> adresseColumn;
-
-    /** * A simple data type that represents a Laboratory. */
-    private static class Laboratory{
-        private final String name;
-        private final String address;
-        public Laboratory(String name, String address)
-        { this.name = name; this.address = address; }
-    }
-
-    private static final List<Laboratory> LABORS = Arrays.asList(
-            new Laboratory("John", "123 Fourth Avenue"),
-            new Laboratory("Joe", "22 Lance Ln"),
-            new Laboratory("George", "1600 Pennsylvania Avenue"));
+    private TextColumn<Laboratory> raisonSocialeColumn;
+    private TextColumn<Laboratory> emailColumn;
+    private List<Laboratory> labList;
 
     /** * The list of data to display. */
 
     public LabViewImpl() {
         initlaborList();
-        laborList.setRowCount(LABORS.size(), true);
-        laborList.setRowData(0, LABORS);
+        loadLabs();
+        labCellTable.setRowCount(labList.size(), true);
+        labCellTable.setRowData(0, labList);
         initWidget(uiBinder.createAndBindUi(this));
 
     }
+
     public void setPresenter(final Presenter listener) {
         presenter = listener;
 
     }
+    public void loadLabs(){
+        Laboratory lab1 = new Laboratory();
+        Laboratory lab2 = new Laboratory();
+        Laboratory lab3 = new Laboratory();
+        lab1.setRaisonSociale("Ons");
+        lab1.setEmail("ons.aouinti@gmail.com");
+        lab2.setRaisonSociale("Aymen");
+        lab2.setEmail("aymen.kadri@gmail.com");
+        lab3.setRaisonSociale("Ahmed");
+        lab3.setEmail("ahmed.aouinti@gmail.com");
+        labList = Arrays.asList(lab2, lab1,lab3);
+    }
+    
 
     private void initlaborList() {
-        laborList = new CellTable<Laboratory>(LABS_PAGE_SIZE);
-        laborList.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
-        nameColumn = new TextColumn<Laboratory>() {
+        labCellTable = new CellTable<Laboratory>(LABS_PAGE_SIZE);
+        labCellTable.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
+        raisonSocialeColumn = new TextColumn<Laboratory>() {
             @Override
             public String getValue(Laboratory lab) {
-                return lab.name;
+                return lab.getRaisonSociale();
             }
         };
-        laborList.addColumn(nameColumn, "Name");
+        labCellTable.addColumn(raisonSocialeColumn, "Raison sociale");
 
-        adresseColumn = new TextColumn<Laboratory>() {
+        emailColumn = new TextColumn<Laboratory>() {
             @Override
             public String getValue(Laboratory lab) {
-                return lab.address;
+                return lab.getEmail();
             }
         };
-        laborList.addColumn(adresseColumn, "Address");
-        laborList.setBordered(true);
+        labCellTable.addColumn(emailColumn, "Email");
+        labCellTable.setBordered(true);
 
         //Definition des largeurs de colonnes fixes
-        laborList.setWidth("100%", true);
-        laborList.setColumnWidth(nameColumn, 40.0, Style.Unit.PCT);
-        laborList.setColumnWidth(adresseColumn, 17.0, Style.Unit.PCT);
+        labCellTable.setWidth("100%", true);
+        labCellTable.setColumnWidth(raisonSocialeColumn, 40.0, Style.Unit.PCT);
+        labCellTable.setColumnWidth(emailColumn, 17.0, Style.Unit.PCT);
     }
 
 
