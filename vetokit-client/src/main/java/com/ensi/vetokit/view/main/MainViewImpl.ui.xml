@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:home="urn:import:com.ensi.vetokit.view.home"
+             xmlns:sidebar="urn:import:com.ensi.vetokit.view.sidebar">
+
+    <ui:with field="msg" type="com.ensi.vetokit.resources.AppMessages" />
+    <ui:with field="res" type="com.ensi.vetokit.resources.AppResources" />
+
+    <ui:style>
+        .floatRight {
+            float: right;
+    }
+
+    </ui:style>
+    <g:HTMLPanel>
+        <g:DisclosurePanel ui:field="disclosurePanel"
+                           styleName="{style.floatRight}" >
+            <g:customHeader>
+                <g:Label text="{msg.settings}" />
+            </g:customHeader>
+            <sidebar:SideBarViewImpl ui:field="sideBarViewImpl"/>
+        </g:DisclosurePanel>
+        <home:HomeViewImpl/>
+    </g:HTMLPanel>
+</ui:UiBinder>

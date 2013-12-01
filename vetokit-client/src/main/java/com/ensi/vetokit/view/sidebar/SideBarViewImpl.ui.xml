@@ -5,18 +5,14 @@
         xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 
     <ui:with field="msg" type="com.ensi.vetokit.resources.AppMessages" />
-    <ui:style src="Menu.css" />
+    <ui:style src="SideBar.css" />
 
 
     <g:HTMLPanel>
         <b:ResponsiveNavbar>
-            <b:Nav>
-                <b:NavLink ui:field="homeNav" text="{msg.menuHome}" icon="MAP_MARKER" />
+            <b:Nav alignment="RIGHT">
                 <b:NavLink ui:field="clientNav" text="{msg.menuClient}" icon="FOLDER_OPEN" />
                 <b:NavLink ui:field="laboratoryNav" text="{msg.menuLaboratory}" icon="FOLDER_OPEN" />
-            </b:Nav>
-            <b:Nav alignment="RIGHT">
-                <b:NavLink ui:field="disconnectionNav" text="{msg.menuDisconnection}" icon="SIGNOUT" />
             </b:Nav>
         </b:ResponsiveNavbar>
     </g:HTMLPanel>

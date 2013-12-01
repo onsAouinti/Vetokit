@@ -4,15 +4,19 @@ package com.ensi.vetokit.gin;
 import com.ensi.vetokit.mvp.AppActivityMapper;
 import com.ensi.vetokit.mvp.AppPlaceController;
 import com.ensi.vetokit.mvp.AppPlaceHistoryMapper;
-import com.ensi.vetokit.place.HomePlace;
+import com.ensi.vetokit.place.MainPlace;
 import com.ensi.vetokit.view.client.ClientView;
 import com.ensi.vetokit.view.client.ClientViewImpl;
 import com.ensi.vetokit.view.home.HomeView;
 import com.ensi.vetokit.view.home.HomeViewImpl;
 import com.ensi.vetokit.view.labs.LabView;
 import com.ensi.vetokit.view.labs.LabViewImpl;
+import com.ensi.vetokit.view.main.MainView;
+import com.ensi.vetokit.view.main.MainViewImpl;
 import com.ensi.vetokit.view.menu.MenuView;
 import com.ensi.vetokit.view.menu.MenuViewImpl;
+import com.ensi.vetokit.view.sidebar.SideBarView;
+import com.ensi.vetokit.view.sidebar.SideBarViewImpl;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.event.shared.EventBus;
@@ -37,6 +41,8 @@ public class VetokitModule extends AbstractGinModule {
         bind(ClientView.class).to(ClientViewImpl.class).in(Singleton.class);
         bind(LabView.class).to(LabViewImpl.class).in(Singleton.class);
         bind(MenuView.class).to(MenuViewImpl.class).in(Singleton.class);
+        bind(MainView.class).to(MainViewImpl.class).in(Singleton.class);
+        bind(SideBarView.class).to(SideBarViewImpl.class).in(Singleton.class);
     }
 
     @Singleton
@@ -55,7 +61,7 @@ public class VetokitModule extends AbstractGinModule {
     @Provides
     PlaceHistoryHandler getPlaceHistoryHandler(final AppPlaceHistoryMapper historyMapper, final EventBus eventBus, final PlaceController placeController) {
         final PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
-        historyHandler.register(placeController, eventBus, new HomePlace());
+        historyHandler.register(placeController, eventBus, new MainPlace());
         return historyHandler;
     }
 
