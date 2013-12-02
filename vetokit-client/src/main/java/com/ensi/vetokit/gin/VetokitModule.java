@@ -41,8 +41,8 @@ public class VetokitModule extends AbstractGinModule {
         bind(ClientView.class).to(ClientViewImpl.class).in(Singleton.class);
         bind(LabView.class).to(LabViewImpl.class).in(Singleton.class);
         bind(MenuView.class).to(MenuViewImpl.class).in(Singleton.class);
-        bind(MainView.class).to(MainViewImpl.class).in(Singleton.class);
         bind(SideBarView.class).to(SideBarViewImpl.class).in(Singleton.class);
+        bind(MainView.class).to(MainViewImpl.class).in(Singleton.class);
     }
 
     @Singleton

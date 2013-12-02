@@ -1,6 +1,6 @@
 package com.ensi.vetokit.view.main;
 
-import com.ensi.vetokit.activity.SideBarActivity;
+import com.ensi.vetokit.view.home.HomeViewImpl;
 import com.ensi.vetokit.view.sidebar.SideBarView;
 import com.ensi.vetokit.view.sidebar.SideBarViewImpl;
 import com.google.gwt.core.client.GWT;
@@ -24,18 +24,32 @@ public class MainViewImpl extends Composite implements MainView {
     @UiField
     SideBarViewImpl sideBarViewImpl;
 
-    @Inject
-    private SideBarView view;
-    SideBarActivity sideBarActivity;
+    @UiField
+    SimplePanel centerPanel;
 
+    /*@UiField
+    TabPanel tabPanel;*/
+
+    @Inject
+    SideBarView view;
+
+    @Inject
     public MainViewImpl( ) {
-        sideBarActivity = new SideBarActivity();
         initWidget(uiBinder.createAndBindUi(this));
+        /*HomeViewImpl homeViewImpl = new HomeViewImpl();
+        tabPanel.add(homeViewImpl, "");*/
     }
 
     public void setPresenter(Presenter listener) {
-        sideBarViewImpl.setPresenter(sideBarActivity);
         presenter = listener;
+    }
+
+    public SideBarView getSideBarView() {
+        return sideBarViewImpl;
+    }
+
+    public SimplePanel getCenterPanel() {
+        return centerPanel;
     }
 
 }

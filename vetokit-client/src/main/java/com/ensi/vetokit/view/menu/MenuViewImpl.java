@@ -18,12 +18,12 @@ public class MenuViewImpl extends Composite implements MenuView {
 
     @UiField
     NavLink disconnectionNav;
-    @UiField
-    NavLink clientNav;
+    /*@UiField
+    NavLink clientNav;*/
     @UiField
     NavLink homeNav;
-    @UiField
-    NavLink laboratoryNav;
+    /*@UiField
+    NavLink laboratoryNav;*/
 
     private Presenter presenter;
 
@@ -35,20 +35,20 @@ public class MenuViewImpl extends Composite implements MenuView {
         presenter = listener;
     }
 
-    @UiHandler("clientNav")
+    /*@UiHandler("clientNav")
     public void clickOnClientNav(final ClickEvent event) {
         presenter.goToClientPlace();
-    }
+    }*/
 
     @UiHandler("homeNav")
     public void clickOnHomeNav(final ClickEvent event) {
         presenter.goToHomePlace();
     }
 
-    @UiHandler("laboratoryNav")
+    /*@UiHandler("laboratoryNav")
     public void clickOnLaboratoireNav(final ClickEvent event) {
         presenter.goToLaboratoirePlace();
-    }
+    }*/
 
     @UiHandler("disconnectionNav")
     public void clickOnDisconnectionNav(final ClickEvent event) {

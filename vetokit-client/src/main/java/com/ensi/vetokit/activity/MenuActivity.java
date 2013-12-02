@@ -25,12 +25,12 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
 
     @Inject
     private HomePlace homePlace;
-
+/*
     @Inject
     private ClientPlace clientPlace;
 
     @Inject
-    private LabPlace labPlace;
+    private LabPlace labPlace;*/
 
 
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
@@ -42,13 +42,13 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
         placeController.goTo(place);
     }
 
-    public void goToClientPlace() {
+    /*public void goToClientPlace() {
         goTo(clientPlace);
     }
 
     public void goToLaboratoirePlace() {
         goTo(labPlace);
-    }
+    }*/
 
     public void goToHomePlace() {
         goTo(homePlace);

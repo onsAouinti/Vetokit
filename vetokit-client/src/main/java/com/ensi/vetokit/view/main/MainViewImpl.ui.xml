@@ -2,7 +2,8 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:home="urn:import:com.ensi.vetokit.view.home"
-             xmlns:sidebar="urn:import:com.ensi.vetokit.view.sidebar">
+             xmlns:sidebar="urn:import:com.ensi.vetokit.view.sidebar"
+             xmlns:labs="urn:import:com.ensi.vetokit.view.labs">
 
     <ui:with field="msg" type="com.ensi.vetokit.resources.AppMessages" />
     <ui:with field="res" type="com.ensi.vetokit.resources.AppResources" />
@@ -13,7 +14,7 @@
     }
 
     </ui:style>
-    <g:HTMLPanel>
+    <g:HTMLPanel ui:field="test">
         <g:DisclosurePanel ui:field="disclosurePanel"
                            styleName="{style.floatRight}" >
             <g:customHeader>
@@ -21,6 +22,8 @@
             </g:customHeader>
             <sidebar:SideBarViewImpl ui:field="sideBarViewImpl"/>
         </g:DisclosurePanel>
-        <home:HomeViewImpl/>
+        <g:SimplePanel ui:field="centerPanel">
+            <!--<home:HomeViewImpl/>-->
+        </g:SimplePanel>
     </g:HTMLPanel>
 </ui:UiBinder>

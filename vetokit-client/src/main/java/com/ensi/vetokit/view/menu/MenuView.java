@@ -11,8 +11,8 @@ public interface MenuView extends IsWidget {
 
         void goTo(Place place);
         void disconnect();
-        void goToClientPlace();
+        /*void goToClientPlace();*/
         void goToHomePlace();
-        void goToLaboratoirePlace();
+        /*void goToLaboratoirePlace();*/
     }
 }

@@ -1,5 +1,6 @@
 package com.ensi.vetokit.view.sidebar;
 
+import com.ensi.vetokit.view.main.MainView;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -8,6 +9,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 
 public class SideBarViewImpl extends Composite implements SideBarView {
 
@@ -34,12 +36,12 @@ public class SideBarViewImpl extends Composite implements SideBarView {
 
     @UiHandler("laboratoryNav")
     public void clickOnLaboratoireNav(final ClickEvent event) {
-        //presenter.goToLaboratoirePlace();
+        presenter.goToLaboratoirePlace();
     }
 
     @UiHandler("clientNav")
     public void clickOnClientNav(final ClickEvent event) {
-        //presenter.goToClientPlace();
+        presenter.goToClientPlace();
     }
 
 }

@@ -14,6 +14,12 @@ public interface AppResources extends ClientBundle {
         @Source("images/logo_vega_65p.png")
         ImageResource logoOctopus();
 
+        @Source("images/edit_icon_grey.png")
+        public ImageResource getEditIcon();
+
+        @Source("images/delete_icon_black.png")
+        public ImageResource getDeleteIcon();
+
     }
 
 

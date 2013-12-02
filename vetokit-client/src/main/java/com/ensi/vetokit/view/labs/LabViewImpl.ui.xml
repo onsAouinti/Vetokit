@@ -3,15 +3,27 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
     <ui:style>
+        .pager {
+            margin-bottom: 12px;
+        }
         .cellTable {
             border-bottom: 1px solid #ccc;
             text-align: left;
             margin-bottom: 4px;
         }
-
-
+        .buttonPanel {
+            padding: 8px 20px;
+            border-top: 1px solid #ccc;
+        }
     </ui:style>
     <g:HTMLPanel>
-        <b:CellTable addStyleNames='{style.cellTable}' pageSize='15' ui:field='labCellTable' />
+
+        <b:SimplePager  location="RIGHT" display="{labCellTable}"
+                        fastForwardRows="15" styleName="{style.pager}"/>
+        <b:CellTable ui:field="labCellTable"  pageSize='15'
+                     bordered="true" condensed="true" striped="true" />
+
+
     </g:HTMLPanel>
+
 </ui:UiBinder>
