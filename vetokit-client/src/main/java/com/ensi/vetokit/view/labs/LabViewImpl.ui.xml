@@ -19,8 +19,8 @@
     <g:HTMLPanel>
 
         <b:SimplePager  location="RIGHT" display="{labCellTable}"
-                        fastForwardRows="15" styleName="{style.pager}"/>
-        <b:CellTable ui:field="labCellTable"  pageSize='15'
+                        fastForwardRows="5" styleName="{style.pager}"/>
+        <b:CellTable ui:field="labCellTable"
                      bordered="true" condensed="true" striped="true" />
 
 

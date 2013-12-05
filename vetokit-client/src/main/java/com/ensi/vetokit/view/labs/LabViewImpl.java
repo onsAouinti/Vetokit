@@ -17,6 +17,8 @@ import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.RangeChangeEvent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,13 +36,14 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
     @UiField(provided=true)
     CellTable labCellTable;
 
-    private static final int LABS_PAGE_SIZE = 15;
+    private static final int LABS_PAGE_SIZE = 5;
 
     private TextColumn<Laboratory> raisonSocialeColumn;
     private TextColumn<Laboratory> emailColumn;
     private OperationsColumn<Laboratory> laboratoryOperationsColumn;
 
     private List<Laboratory> labList = new ArrayList<Laboratory>();
+    ListDataProvider<Laboratory> dataProvider = new ListDataProvider<Laboratory>();
 
     Pagination pagination = new Pagination();
     SimplePager pager = new SimplePager();
@@ -48,10 +51,11 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
     /** * The list of data to display. */
 
     public LabViewImpl() {
-        initlaborList();
         loadLabs();
-        labCellTable.setRowCount(labList.size(), true);
-        labCellTable.setRowData(0, labList);
+        initlaborList();
+        /*labCellTable.setRowCount(labList.size(), true);
+        labCellTable.setRowData(0, labList) */
+
         initWidget(uiBinder.createAndBindUi(this));
 
     }
@@ -64,6 +68,12 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
         Laboratory lab1 = new Laboratory();
         Laboratory lab2 = new Laboratory();
         Laboratory lab3 = new Laboratory();
+        Laboratory lab4 = new Laboratory();
+        Laboratory lab5 = new Laboratory();
+        Laboratory lab6 = new Laboratory();
+        Laboratory lab7 = new Laboratory();
+        Laboratory lab8 = new Laboratory();
+        Laboratory lab9 = new Laboratory();
 
         lab1.setRaisonSociale("Ons");
         lab1.setEmail("ons.aouinti@gmail.com");
@@ -74,13 +84,43 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
         lab3.setRaisonSociale("Ahmed");
         lab3.setEmail("ahmed.aouinti@gmail.com");
 
+        lab4.setRaisonSociale("Ons");
+        lab4.setEmail("ons.aouinti@gmail.com");
+
+        lab5.setRaisonSociale("Aymen");
+        lab5.setEmail("aymen.kadri@gmail.com");
+
+        lab6.setRaisonSociale("Ahmed");
+        lab6.setEmail("ahmed.aouinti@gmail.com");
+
+        lab7.setRaisonSociale("Ons");
+        lab7.setEmail("ons.aouinti@gmail.com");
+
+        lab8.setRaisonSociale("Aymen");
+        lab8.setEmail("aymen.kadri@gmail.com");
+
+        lab9.setRaisonSociale("Ahmed");
+        lab9.setEmail("ahmed.aouinti@gmail.com");
+
         labList.add(lab1);
         labList.add(lab2);
         labList.add(lab3);
-    }
+        labList.add(lab4);
+        labList.add(lab5);
+        labList.add(lab6);
+        labList.add(lab7);
+        labList.add(lab8);
+        labList.add(lab9);
+        labList.add(lab9);
+        labList.add(lab9);
+        labList.add(lab9);
+        labList.add(lab9);
+        dataProvider.setList(labList);
+ }
     
 
     private void initlaborList() {
+
         labCellTable = new CellTable<Laboratory>(LABS_PAGE_SIZE);
         labCellTable.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
         raisonSocialeColumn = new TextColumn<Laboratory>() {
@@ -106,12 +146,21 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
             }
         };
 
+        labCellTable.addRangeChangeHandler(new RangeChangeEvent.Handler() {
+
+            public void onRangeChange(RangeChangeEvent event) {
+                rebuildPager(pagination, pager);
+            }
+        });
+
         labCellTable.addColumn(laboratoryOperationsColumn, "Operations");
 
         pager.setDisplay(labCellTable);
         pagination.clear();
+        dataProvider.addDataDisplay(labCellTable);
 
         //Definition des largeurs de colonnes fixes
+        labCellTable.setRowCount(labList.size(), true);
         labCellTable.setWidth("100%", true);
         labCellTable.setBordered(true);
         labCellTable.setColumnWidth(raisonSocialeColumn, 40.0, Style.Unit.PCT);
@@ -123,9 +172,16 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
     }
 
     public void deleteLaboratory(Laboratory laboratory) {
-        labList.remove(laboratory);
+        /*labList.remove(laboratory);
         labCellTable.setRowCount(labList.size(), true);
         labCellTable.setRowData(0, labList);
+        rebuildPager(pagination, pager);*/
+        dataProvider.getList().remove(laboratory);
+        dataProvider.flush();
+        dataProvider.refresh();
+        labCellTable.setRowCount(labList.size(), true);
+        dataProvider.addDataDisplay(labCellTable);
+        rebuildPager(pagination, pager);
     }
 
     private void rebuildPager(final Pagination pagination,final SimplePager pager) {
