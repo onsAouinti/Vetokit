@@ -6,6 +6,7 @@ import com.ensi.vetokit.place.ClientPlace;
 import com.ensi.vetokit.place.HomePlace;
 import com.ensi.vetokit.view.client.ClientView;
 import com.ensi.vetokit.view.home.HomeView;
+import com.ensi.vetokit.view.main.MainView;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.event.shared.EventBus;
@@ -23,6 +24,9 @@ public class ClientActivity extends AbstractActivity implements HasPlace, Client
     private PlaceController placeController;
 
     private ClientPlace place;
+
+    @Inject
+    private MainView mainView;
 
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
         view.setPresenter(this);

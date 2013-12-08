@@ -38,19 +38,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>vetokit-shared</artifactId>
-            <version>${project.version}</version>
-            <!--<scope>provided</scope>-->
-        </dependency>
-        <!--<dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>vetokit-shared</artifactId>
-            <version>${project.version}</version>
-            <classifier>sources</classifier>
-            <scope>provided</scope>
-        </dependency>-->
-        <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
             <version>${gwtVersion}</version>
@@ -107,7 +94,7 @@
             <version>${gwt-dnd.version}</version>
         </dependency>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.7</version>
@@ -125,7 +112,7 @@
             <version>1.0.0.GA</version>
             <classifier>sources</classifier>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.google.appengine</groupId>
@@ -241,7 +228,34 @@
                     <name>dev</name>
                 </property>
             </activation>
+            <build>
+                <!-- FIXME: workaround for MGWT-332 -->
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>add-shared-sources-to-classpath</id>
+                                <!-- After 'process-resources' so they're not copied to ${project.build.outputDirectory} -->
+                                <!-- But before 'compile' to make them available to 'gwt:run' -->
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>add-resource</goal>
+                                </goals>
+                                <configuration>
+                                    <resources>
+                                        <!-- Only sources, resources are already in the classpath, by definition -->
+                                        <resource>
+                                            <directory>${basedir}/../vetokit-shared/src/main/java</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
-
 </project>

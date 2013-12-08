@@ -30,7 +30,6 @@ public class LabActivity extends AbstractActivity implements HasPlace, LabView.P
 
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
         view.setPresenter(this);
-        /*mainView.getCenterPanel().setWidget(view.asWidget());*/
         panel.setWidget(view.asWidget());
 
         view.setLaboratoryOperationBtnsHandling(new FieldUpdater<Laboratory, String>() {
@@ -38,9 +37,8 @@ public class LabActivity extends AbstractActivity implements HasPlace, LabView.P
             public void update(int index, Laboratory laboratory, String value) {
                 if (value.equals(VetokitConstants.CSS_CLASS_DELETE_BUTTON)) {
                     view.deleteLaboratory(laboratory);
-                } else if (value.equals(VetokitConstants.CSS_CLASS_EDIT_BUTTON)){
-                    view.editLaboratory(laboratory);
                 }
+
             }
         });
 

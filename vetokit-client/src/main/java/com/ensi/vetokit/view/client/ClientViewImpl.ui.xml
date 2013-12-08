@@ -6,6 +6,6 @@
 
     </ui:style>
     <g:HTMLPanel>
-        <b:CellTable ui:field="celltable" />
+        tessss
     </g:HTMLPanel>
 </ui:UiBinder>
