@@ -37,8 +37,9 @@ public class LabActivity extends AbstractActivity implements HasPlace, LabView.P
             public void update(int index, Laboratory laboratory, String value) {
                 if (value.equals(VetokitConstants.CSS_CLASS_DELETE_BUTTON)) {
                     view.deleteLaboratory(laboratory);
+                } else if (value.equals(VetokitConstants.CSS_CLASS_EDIT_BUTTON)){
+                    view.editLaboratory(laboratory);
                 }
-
             }
         });
 

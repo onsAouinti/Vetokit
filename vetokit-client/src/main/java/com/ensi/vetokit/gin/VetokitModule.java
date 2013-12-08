@@ -12,6 +12,8 @@ import com.ensi.vetokit.view.home.HomeView;
 import com.ensi.vetokit.view.home.HomeViewImpl;
 import com.ensi.vetokit.view.labs.LabView;
 import com.ensi.vetokit.view.labs.LabViewImpl;
+import com.ensi.vetokit.view.labs.popup.PopupLabView;
+import com.ensi.vetokit.view.labs.popup.PopupLabViewImpl;
 import com.ensi.vetokit.view.main.MainView;
 import com.ensi.vetokit.view.main.MainViewImpl;
 import com.ensi.vetokit.view.menu.MenuView;
@@ -40,6 +42,7 @@ public class VetokitModule extends AbstractGinModule {
         bind(HomeView.class).to(HomeViewImpl.class).in(Singleton.class);
         bind(ClientView.class).to(ClientViewImpl.class).in(Singleton.class);
         bind(LabView.class).to(LabViewImpl.class).in(Singleton.class);
+        bind(PopupLabView.class).to(PopupLabViewImpl.class).in(Singleton.class);
         bind(MenuView.class).to(MenuViewImpl.class).in(Singleton.class);
         bind(MainView.class).to(MainViewImpl.class).in(Singleton.class);
 

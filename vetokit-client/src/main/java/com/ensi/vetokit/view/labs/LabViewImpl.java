@@ -1,30 +1,30 @@
 package com.ensi.vetokit.view.labs;
 
 import com.ensi.vetokit.dto.Laboratory;
+import com.ensi.vetokit.view.labs.popup.PopupLabView;
 import com.ensi.vetokit.view.socle.OperationsColumn;
 import com.github.gwtbootstrap.client.ui.*;
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.editor.client.Editor;
-import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.RangeChangeEvent;
+import com.google.inject.Inject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class LabViewImpl extends Composite implements LabView, Editor<Laboratory> {
+public class LabViewImpl extends Composite implements LabView {
 
     private static ViewImplUiBinder uiBinder = GWT.create(ViewImplUiBinder.class);
 
@@ -36,6 +36,9 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
     @UiField(provided=true)
     CellTable labCellTable;
 
+    @Inject
+    private PopupLabView popupView;
+
     private static final int LABS_PAGE_SIZE = 5;
 
     private TextColumn<Laboratory> raisonSocialeColumn;
@@ -46,7 +49,7 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
     ListDataProvider<Laboratory> dataProvider = new ListDataProvider<Laboratory>();
 
     Pagination pagination = new Pagination();
-    SimplePager pager = new SimplePager();
+    SimplePager pager = new SimplePager(SimplePager.TextLocation.CENTER, false, 0, true);
 
     /** * The list of data to display. */
 
@@ -68,12 +71,6 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
         Laboratory lab1 = new Laboratory();
         Laboratory lab2 = new Laboratory();
         Laboratory lab3 = new Laboratory();
-        Laboratory lab4 = new Laboratory();
-        Laboratory lab5 = new Laboratory();
-        Laboratory lab6 = new Laboratory();
-        Laboratory lab7 = new Laboratory();
-        Laboratory lab8 = new Laboratory();
-        Laboratory lab9 = new Laboratory();
 
         lab1.setRaisonSociale("Ons");
         lab1.setEmail("ons.aouinti@gmail.com");
@@ -84,40 +81,12 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
         lab3.setRaisonSociale("Ahmed");
         lab3.setEmail("ahmed.aouinti@gmail.com");
 
-        lab4.setRaisonSociale("Ons");
-        lab4.setEmail("ons.aouinti@gmail.com");
-
-        lab5.setRaisonSociale("Aymen");
-        lab5.setEmail("aymen.kadri@gmail.com");
-
-        lab6.setRaisonSociale("Ahmed");
-        lab6.setEmail("ahmed.aouinti@gmail.com");
-
-        lab7.setRaisonSociale("Ons");
-        lab7.setEmail("ons.aouinti@gmail.com");
-
-        lab8.setRaisonSociale("Aymen");
-        lab8.setEmail("aymen.kadri@gmail.com");
-
-        lab9.setRaisonSociale("Ahmed");
-        lab9.setEmail("ahmed.aouinti@gmail.com");
-
         labList.add(lab1);
         labList.add(lab2);
         labList.add(lab3);
-        labList.add(lab4);
-        labList.add(lab5);
-        labList.add(lab6);
-        labList.add(lab7);
-        labList.add(lab8);
-        labList.add(lab9);
-        labList.add(lab9);
-        labList.add(lab9);
-        labList.add(lab9);
-        labList.add(lab9);
         dataProvider.setList(labList);
- }
-    
+    }
+
 
     private void initlaborList() {
 
@@ -169,6 +138,7 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
 
     public void setLaboratoryOperationBtnsHandling(FieldUpdater<Laboratory, String> fieldUpdater) {
         laboratoryOperationsColumn.setFieldUpdater(fieldUpdater);
+
     }
 
     public void deleteLaboratory(Laboratory laboratory) {
@@ -182,6 +152,20 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
         labCellTable.setRowCount(labList.size(), true);
         dataProvider.addDataDisplay(labCellTable);
         rebuildPager(pagination, pager);
+    }
+
+    public void editLaboratory(final Laboratory laboratory){
+        Command command = new Command() {
+            public void execute() {
+                int i = labList.indexOf(laboratory);
+               Laboratory lab =  popupView.getLaboratory();
+               labList.set(i,lab);
+               dataProvider.refresh();
+               dataProvider.addDataDisplay(labCellTable);
+               rebuildPager(pagination, pager);
+            }
+        };
+        popupView.showPopup(laboratory, command);
     }
 
     private void rebuildPager(final Pagination pagination,final SimplePager pager) {
@@ -258,6 +242,17 @@ public class LabViewImpl extends Composite implements LabView, Editor<Laboratory
         pagination.add(next);
     }
 
-
-
+    @UiHandler("addButton")
+    public void onAddClick(ClickEvent e) {
+        Command command = new Command() {
+            public void execute() {
+                Laboratory lab =  popupView.getLaboratory();
+                labList.add(lab);
+                dataProvider.refresh();
+                dataProvider.addDataDisplay(labCellTable);
+                rebuildPager(pagination, pager);
+            }
+        };
+        popupView.showPopup(new Laboratory(),command);
+    }
 }
