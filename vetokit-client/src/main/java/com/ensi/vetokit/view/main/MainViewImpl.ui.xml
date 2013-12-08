@@ -3,8 +3,7 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
              xmlns:home="urn:import:com.ensi.vetokit.view.home"
-             xmlns:sidebar="urn:import:com.ensi.vetokit.view.sidebar"
-             xmlns:labs="urn:import:com.ensi.vetokit.view.labs"
+             xmlns:labs="urn:import:com.ensi.vetokit.view.labs.list"
              xmlns:client="urn:import:com.ensi.vetokit.view.client">
 
     <ui:with field="msg" type="com.ensi.vetokit.resources.AppMessages" />

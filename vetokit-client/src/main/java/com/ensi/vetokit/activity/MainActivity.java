@@ -9,7 +9,7 @@ import com.ensi.vetokit.place.ClientPlace;
 import com.ensi.vetokit.place.LabPlace;
 import com.ensi.vetokit.place.MainPlace;
 import com.ensi.vetokit.utils.VetokitConstants;
-import com.ensi.vetokit.view.labs.LabViewImpl;
+import com.ensi.vetokit.view.labs.list.LabViewImpl;
 import com.ensi.vetokit.view.main.MainView;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.activity.shared.Activity;

@@ -1,4 +1,4 @@
-package com.ensi.vetokit.view.labs;
+package com.ensi.vetokit.view.labs.list;
 
 import com.ensi.vetokit.resources.AppResources;
 import com.ensi.vetokit.utils.VetokitConstants;
