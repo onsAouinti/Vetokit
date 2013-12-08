@@ -9,11 +9,6 @@ import com.google.gwt.user.client.ui.IsWidget;
 
 public interface PopupLabView extends IsWidget {
 
-    void setPresenter(Presenter listener);
     void showPopup(Laboratory laboratory, Command command);
     Laboratory getLaboratory();
-    public interface Presenter {
-
-        void goTo(Place place);
-    }
 }

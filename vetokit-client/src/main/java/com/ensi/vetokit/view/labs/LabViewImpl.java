@@ -2,6 +2,7 @@ package com.ensi.vetokit.view.labs;
 
 import com.ensi.vetokit.dto.Laboratory;
 import com.ensi.vetokit.view.labs.popup.PopupLabView;
+import com.ensi.vetokit.view.labs.popup.PopupLabViewImpl;
 import com.ensi.vetokit.view.socle.OperationsColumn;
 import com.github.gwtbootstrap.client.ui.*;
 import com.google.gwt.cell.client.FieldUpdater;
@@ -53,7 +54,9 @@ public class LabViewImpl extends Composite implements LabView {
 
     /** * The list of data to display. */
 
+    @Inject
     public LabViewImpl() {
+        popupView = new PopupLabViewImpl();
         loadLabs();
         initlaborList();
         /*labCellTable.setRowCount(labList.size(), true);

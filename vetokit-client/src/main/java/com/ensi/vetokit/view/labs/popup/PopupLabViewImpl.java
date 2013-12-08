@@ -18,8 +18,6 @@ public class PopupLabViewImpl extends Composite implements PopupLabView {
     }
     private static ViewImplUiBinder uiBinder = GWT.create(ViewImplUiBinder.class);
 
-    private Presenter presenter;
-
     private Laboratory laboratory;
 
     private Command command;
@@ -39,10 +37,6 @@ public class PopupLabViewImpl extends Composite implements PopupLabView {
     public PopupLabViewImpl(){
 
         initWidget(uiBinder.createAndBindUi(this));
-    }
-
-    public void setPresenter(Presenter listener){
-        presenter = listener;
     }
 
     public void showPopup(Laboratory laboratory, Command command) {
