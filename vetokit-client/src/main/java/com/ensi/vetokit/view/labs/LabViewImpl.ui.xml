@@ -2,27 +2,16 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
-    <ui:style>
-        .pager {
-            margin-bottom: 12px;
-        }
-        .cellTable {
-            border-bottom: 1px solid #ccc;
-            text-align: left;
-            margin-bottom: 4px;
-        }
-        .buttonPanel {
-            padding: 8px 20px;
-            border-top: 1px solid #ccc;
-        }
-    </ui:style>
+
     <g:HTMLPanel>
 
-        <b:SimplePager  location="RIGHT" display="{labCellTable}"
-                        fastForwardRows="5" styleName="{style.pager}"/>
-        <b:CellTable ui:field="labCellTable"
+       <b:CellTable ui:field="labCellTable"
                      bordered="true" condensed="true" striped="true" />
-
+        <b:SimplePager  location="CENTER" display="{labCellTable}"
+                        fastForwardRows="5" />
+        <b:FormActions>
+        <b:Button ui:field="addButton" icon="PLUS" >Add Laboratory</b:Button>
+        </b:FormActions>
 
     </g:HTMLPanel>
 

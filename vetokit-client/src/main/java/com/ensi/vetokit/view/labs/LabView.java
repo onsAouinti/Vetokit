@@ -12,6 +12,7 @@ public interface LabView extends IsWidget {
     void setLaboratoryOperationBtnsHandling(FieldUpdater<Laboratory, String> fieldUpdater);
 
     void deleteLaboratory(Laboratory laboratory);
+    void editLaboratory(Laboratory laboratory);
 
     public interface Presenter {
 
