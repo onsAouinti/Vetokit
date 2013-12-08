@@ -5,7 +5,7 @@
         xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 
     <ui:with field="msg" type="com.ensi.vetokit.resources.AppMessages" />
-    <ui:style src="Menu.css" />
+    <ui:style src="Header.css" />
 
 
     <g:HTMLPanel>

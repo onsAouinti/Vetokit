@@ -16,14 +16,10 @@ public class Vetokit implements EntryPoint {
       final SimplePanel menuDisplay = ginjector.getWidget();
       ginjector.getContentManager().setDisplay(menuDisplay);
 
-      /*final SimplePanel sideBar = ginjector.getWidget();
-      ginjector.getContentManager().setDisplay(sideBar);*/
-
       final SimplePanel activityDisplay = ginjector.getWidget();
       ginjector.getActivityManager().setDisplay(activityDisplay);
 
       RootPanel.get("menu").add(menuDisplay);
-      //RootPanel.get("side-bar").add(sideBar);
       RootPanel.get("body").add(activityDisplay);
 
       ginjector.getPlaceHistoryHandler().handleCurrentHistory();

@@ -1,10 +1,8 @@
 package com.ensi.vetokit.activity;
 
 
-import com.ensi.vetokit.place.ClientPlace;
 import com.ensi.vetokit.place.HomePlace;
-import com.ensi.vetokit.place.LabPlace;
-import com.ensi.vetokit.view.menu.MenuView;
+import com.ensi.vetokit.view.header.HeaderView;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
@@ -13,7 +11,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 
-public class MenuActivity extends AbstractActivity implements MenuView.Presenter {
+public class HeaderActivity extends AbstractActivity implements HeaderView.Presenter {
 
 
 
@@ -21,7 +19,7 @@ public class MenuActivity extends AbstractActivity implements MenuView.Presenter
     private PlaceController placeController;
 
     @Inject
-    private MenuView view;
+    private HeaderView view;
 
     @Inject
     private HomePlace homePlace;

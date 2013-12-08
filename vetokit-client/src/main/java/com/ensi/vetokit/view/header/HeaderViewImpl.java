@@ -1,4 +1,4 @@
-package com.ensi.vetokit.view.menu;
+package com.ensi.vetokit.view.header;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.google.gwt.core.client.GWT;
@@ -9,11 +9,11 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class MenuViewImpl extends Composite implements MenuView {
+public class HeaderViewImpl extends Composite implements HeaderView {
 
     private static ViewImplUiBinder uiBinder = GWT.create(ViewImplUiBinder.class);
 
-    interface ViewImplUiBinder extends UiBinder<Widget, MenuViewImpl> {
+    interface ViewImplUiBinder extends UiBinder<Widget, HeaderViewImpl> {
     }
 
     @UiField
@@ -27,7 +27,7 @@ public class MenuViewImpl extends Composite implements MenuView {
 
     private Presenter presenter;
 
-    public MenuViewImpl() {
+    public HeaderViewImpl() {
         initWidget(uiBinder.createAndBindUi(this));
     }
 
