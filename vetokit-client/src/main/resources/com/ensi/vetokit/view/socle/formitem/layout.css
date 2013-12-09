@@ -1,0 +1,159 @@
+h1 {
+	font-family: "Trebuchet MS", verdana, arial, sans serif;
+}
+
+h2,h3 {
+	font-family: verdana, arial, sans serif;
+}
+
+h1 {
+	margin: 0 1% 14px 1%;
+	padding: 0 30px 2px 0;
+	color: #475159;
+	border-bottom: 1px #475159 solid;
+	font-size: 2em;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+h1 a {
+	color: #475159;
+}
+
+h1 a:hover {
+	color: #991111;
+}
+
+h2 {
+	padding: 0 30px 2px 0;
+	margin: 14px 0 5px 0;
+	color: #6A8899;
+}
+
+h3 {
+	margin: 14px 0 0 0;
+	padding: 0 30px 2px 0;
+	color: #475159;
+	font-size: 1.3em;
+}
+
+.menuLink div {
+    color: #367499;
+    text-decoration: underline;
+}
+
+
+.menuLink:hover div {
+    color: #367499;
+    text-decoration: underline;
+}
+
+.anchorLink:hover {
+    color: #367499;
+    text-decoration: underline;
+}
+
+.anchorLink {
+    color: #367499;
+    text-decoration: underline;
+}
+
+.marginItem {
+	margin-bottom: 10px;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.cell {
+	float: left;
+	position: relative;
+}
+
+.formLabel {
+	background-color: transparent;
+	border-bottom-color: #666;
+	border-collapse: separate;
+	border-left-color: #666;
+	border-right-color: #666;
+	border-top-color: #666;
+	color: #666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	height: 13px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	text-align: right;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.formLabelWidth {
+	width: 180px;
+}
+
+
+.formLabel120px {
+    width: 120px;
+}
+
+.formLabel20px {
+    width: 20px;
+}
+
+.formLabel80px {
+    width: 80px;
+}
+
+.formLabel100px {
+    width: 100px;
+}
+
+.disabled {
+	color: #CFCFCF !important;
+}
+
+/* correctifs designer */
+/* correction de la taille des liens */
+.externalLink div {
+	width: auto;
+}
+
+@if !user.agent ie6 {
+	@sprite .containExternalLink{
+		gwt-image: "externalLink";
+		background-position: 0px;
+		width: 100%;
+		height: 11px!important;
+	}
+
+	@sprite .externalLink div {
+		gwt-image: "externalLink";
+		background-position: 0px;
+		width: 100%;
+		height: 11px!important;
+	}
+
+	@sprite .containInternalLink{
+		gwt-image: "redArrow";
+		background-position: 0px;
+		width: 100%;
+		height: 11px!important;
+	}
+}
+
+.tabPanel {
+    table-layout: fixed;
+}
+
+.scrollableContainer {
+    overflow-x: auto;
+}

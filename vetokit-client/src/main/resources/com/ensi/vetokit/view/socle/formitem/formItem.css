@@ -1,0 +1,131 @@
+.formItem {
+	display: table;
+	color: #666;
+}
+
+.formItem .item {
+	display: table-cell;
+}
+
+.formItem .input {
+	border: 1px solid #CCC;
+	font-size: 11px;
+    display: inline-block;
+}
+
+.formItem .valueLabel{
+	font-weight: bold;
+}
+
+.separator {
+	padding-left: 3px;
+	padding-right: 3px;
+	width: 3px;
+}
+
+.separatorContent:after {
+	content: ":";
+}
+
+.mandatory:after {
+	content: "*";
+	color: #911;
+	margin-left: 3px;
+}
+
+
+.formItem .input:focus {
+	border:1px solid #83D2FF;
+}
+
+.error .label {
+	color: red;
+}
+.error .input {
+	border: 1px solid red !important;
+}
+
+.formItem .important {
+	background-color: #FFE1B2;
+}
+
+.importantReadOnly {
+	background-color: #FFE1B2;
+	width: 120px !important;
+}
+
+.smallWidget {
+	width: 30px !important;
+}
+
+.mediumWidget {
+	width: 60px !important;
+}
+
+.largeWidget {
+	width: 140px !important;
+}
+
+.xlargeWidget {
+	width: 230px !important;
+}
+
+.xxlargeWidget {
+	width: 350px !important;
+}
+
+.fieldDescription {
+	font-size: 9px;
+	color: gray;
+	padding-top: 2px;
+}
+
+.hidden {
+	display: none;
+}
+
+.siretItem {
+	margin-right : 2px;
+}
+
+.ibanItem {
+	margin-right : 2px;
+}
+
+.checkBoxText {
+	font-weight: normal;
+}
+
+@if !user.agent ie6 ie8 {
+	.inputContainer {
+	}
+}
+
+@if !user.agent ie6 {
+
+    @sprite .affirmative {
+        gwt-image: "yesPicto";
+        background-position: 0px 4px;
+        background-position-y: 3px;
+        height: 18px !important;
+        margin-bottom: -4px !important;
+    }
+
+    @sprite .negative {
+        gwt-image: "noPicto";
+        background-position: 0px 4px;
+        background-position-y: 3px;
+        height: 20px !important;
+        margin-bottom: -6px !important;
+    }
+
+    @sprite .calendarImage {
+            gwt-image: "pictoCalendrier";
+            vertical-align: middle;
+            margin: 0 4px;
+            cursor: pointer;
+            display: inline-block;
+        }
+}
+
+

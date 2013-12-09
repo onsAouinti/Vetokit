@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+  <ui:with type="com.ensi.vetokit.view.socle.formitem.FormItemResources" field="res"/>
+  <g:FlowPanel ui:field="rootPanel" addStyleNames="{res.style.formItem} {res.layout.marginItem}">
+    <b:Label ui:field="nameLabel" addStyleNames="{res.layout.formLabelWidth} {res.layout.formLabel} {res.style.label}" />
+    <g:Label ui:field="separator" addStyleNames="{res.style.item} {res.style.separator}" width="18px"/>
+    <g:FlowPanel ui:field="inputContainer"/>
+    <g:SimplePanel ui:field="readOnlyWidgetContainer" addStyleNames="{res.style.valueLabel}" />
+    <b:Label ui:field="fieldDescriptionLabel" visible="false" addStyleNames="{res.style.fieldDescription}"/>
+  </g:FlowPanel>
+</ui:UiBinder>

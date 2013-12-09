@@ -1,6 +1,7 @@
 package com.ensi.vetokit.view.labs.popup;
 
 import com.ensi.vetokit.dto.Laboratory;
+import com.ensi.vetokit.view.socle.formitem.TextFormItem;
 import com.github.gwtbootstrap.client.ui.*;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -26,10 +27,10 @@ public class PopupLabViewImpl extends Composite implements PopupLabView {
     Modal modal;
 
     @UiField
-    TextBox raisonSocialeField;
+    TextFormItem raisonSocialeField;
 
     @UiField
-    TextBox emailField;
+    TextFormItem emailField;
 
     @UiField
     Button saveButton;
@@ -42,16 +43,16 @@ public class PopupLabViewImpl extends Composite implements PopupLabView {
     public void showPopup(Laboratory laboratory, Command command) {
         this.command = command;
         this.laboratory= laboratory;
-        raisonSocialeField.setText(laboratory.getRaisonSociale());
-        emailField.setText(laboratory.getEmail());
+        raisonSocialeField.setValue(laboratory.getRaisonSociale());
+        emailField.setValue(laboratory.getEmail());
         modal.show();
 
      }
 
     @UiHandler("saveButton")
     public void onSaveClick(ClickEvent e) {
-        String newMail=emailField.getText();
-        String newRaisonSociale=raisonSocialeField.getText();
+        String newMail=emailField.getValue();
+        String newRaisonSociale=raisonSocialeField.getValue();
         laboratory.setEmail(newMail);
         laboratory.setRaisonSociale(newRaisonSociale);
         modal.hide();

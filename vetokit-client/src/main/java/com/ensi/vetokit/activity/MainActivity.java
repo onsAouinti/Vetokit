@@ -72,7 +72,7 @@ public class MainActivity extends AbstractActivity implements HasPlace, MainView
     }
 
     public void loadLaboratory() {
-        factory.greeting().greetServer("tess").fire(
+        /*factory.greeting().greetServer("tess").fire(
                 new Receiver<GreetingResponseProxy>() {
                     public void onFailure(ServerFailure failure) {
 
@@ -81,7 +81,7 @@ public class MainActivity extends AbstractActivity implements HasPlace, MainView
                     public void onSuccess(GreetingResponseProxy response) {
 
                     }
-                });
+                });*/
     }
 
     public void goTo(final Place place) {
