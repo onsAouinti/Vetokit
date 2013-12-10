@@ -35,10 +35,6 @@ public interface GlobalResources extends ClientBundle {
 
         String externalLink();
 
-        String containExternalLink();
-
-        String containInternalLink();
-
         String disabled();
 
         String formLabel120px();

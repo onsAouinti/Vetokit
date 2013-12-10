@@ -96,36 +96,9 @@
 	font-weight: normal;
 }
 
-@if !user.agent ie6 ie8 {
-	.inputContainer {
-	}
+
+.inputContainer {
 }
 
-@if !user.agent ie6 {
-
-    @sprite .affirmative {
-        gwt-image: "yesPicto";
-        background-position: 0px 4px;
-        background-position-y: 3px;
-        height: 18px !important;
-        margin-bottom: -4px !important;
-    }
-
-    @sprite .negative {
-        gwt-image: "noPicto";
-        background-position: 0px 4px;
-        background-position-y: 3px;
-        height: 20px !important;
-        margin-bottom: -6px !important;
-    }
-
-    @sprite .calendarImage {
-            gwt-image: "pictoCalendrier";
-            vertical-align: middle;
-            margin: 0 4px;
-            cursor: pointer;
-            display: inline-block;
-        }
-}
 
 

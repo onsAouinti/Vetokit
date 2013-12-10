@@ -127,29 +127,6 @@ h3 {
 	width: auto;
 }
 
-@if !user.agent ie6 {
-	@sprite .containExternalLink{
-		gwt-image: "externalLink";
-		background-position: 0px;
-		width: 100%;
-		height: 11px!important;
-	}
-
-	@sprite .externalLink div {
-		gwt-image: "externalLink";
-		background-position: 0px;
-		width: 100%;
-		height: 11px!important;
-	}
-
-	@sprite .containInternalLink{
-		gwt-image: "redArrow";
-		background-position: 0px;
-		width: 100%;
-		height: 11px!important;
-	}
-}
-
 .tabPanel {
     table-layout: fixed;
 }

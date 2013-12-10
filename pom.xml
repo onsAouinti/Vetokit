@@ -11,8 +11,8 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>vetokit-client</module>
         <module>vetokit-shared</module>
+        <module>vetokit-client</module>
         <module>vetokit-server</module>
     </modules>
     <name>vetokit</name>
@@ -20,7 +20,7 @@
     <properties>
         <mavenVersion>3.0</mavenVersion>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.5.0</gwtVersion>
+        <gwt.version>2.5.0</gwt.version>
         <gae.version>1.8.5</gae.version>
         <gin.version>2.0.0</gin.version>
         <guice.version>3.0</guice.version>
@@ -28,6 +28,7 @@
         <gwt-cal.version>0.9.3.1</gwt-cal.version>
         <gwt-dnd.version>3.1.2</gwt-dnd.version>
         <guava.version>13.0.1</guava.version>
+        <validation-api.version>1.0.0.GA</validation-api.version>
 
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
@@ -45,7 +46,7 @@
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-servlet</artifactId>
-                <version>${gwtVersion}</version>
+                <version>${gwt.version}</version>
                 <scope>runtime</scope>
             </dependency>
             <dependency>
@@ -101,6 +102,18 @@
                 <artifactId>servlet-api</artifactId>
                 <version>2.5</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <classifier>sources</classifier>
+                <version>${validation-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

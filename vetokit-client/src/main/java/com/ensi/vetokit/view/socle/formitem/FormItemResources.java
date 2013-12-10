@@ -63,17 +63,11 @@ public interface FormItemResources extends GlobalResources {
 
         String hidden();
 
-        String affirmative();
-
-        String negative();
-
         String siretItem();
 
         String ibanItem();
 
         String checkBoxText();
-
-        String calendarImage();
 
         String inputContainer();
     }
