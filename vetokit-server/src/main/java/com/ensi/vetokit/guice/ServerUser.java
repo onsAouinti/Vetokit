@@ -1,5 +1,8 @@
 package com.ensi.vetokit.guice;
 
+import com.ensi.vetokit.factory.CurrentUser;
+import com.ensi.vetokit.factory.IsAdmin;
+import com.ensi.vetokit.factory.User;
 import com.google.inject.Inject;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;

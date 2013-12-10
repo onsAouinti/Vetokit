@@ -1,5 +1,8 @@
 package com.ensi.vetokit.guice;
 
+import com.ensi.vetokit.factory.CurrentUser;
+import com.ensi.vetokit.factory.IsAdmin;
+import com.ensi.vetokit.factory.User;
 import com.google.common.base.Throwables;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -43,12 +46,14 @@ public class AppServletContextListener extends GuiceServletContextListener {
 				bind(User.class).annotatedWith(CurrentUser.class).to(ServerUser.class);
 			}
 
-			@Provides @CurrentUser @RequestScoped
+			@Provides @CurrentUser
+            @RequestScoped
             java.lang.String provideCurrentUser(HttpServletRequest request) {
 				return request.getRemoteUser();
 			}
 
-			@Provides @IsAdmin @RequestScoped
+			@Provides @IsAdmin
+            @RequestScoped
 			boolean provideIsAdmin(HttpServletRequest request) {
 				return request.isUserInRole("admin");
 			}
