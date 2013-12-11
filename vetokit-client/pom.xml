@@ -82,7 +82,10 @@
             <artifactId>gwt-dnd</artifactId>
             <version>${gwt-dnd.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>net.customware.gwt.dispatch</groupId>
+            <artifactId>gwt-dispatch</artifactId>
+        </dependency>
          <dependency>
              <groupId>junit</groupId>
              <artifactId>junit</artifactId>

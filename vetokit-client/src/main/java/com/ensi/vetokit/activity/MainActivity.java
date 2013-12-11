@@ -1,6 +1,9 @@
 package com.ensi.vetokit.activity;
 
 
+import com.ensi.vetokit.action.IncrementCounter;
+import com.ensi.vetokit.action.IncrementCounterResult;
+import com.ensi.vetokit.dispatcher.VetokitDispatcherAsync;
 import com.ensi.vetokit.dto.Laboratory;
 import com.ensi.vetokit.factory.AppFactory;
 import com.ensi.vetokit.factory.GreetingResponseProxy;
@@ -17,6 +20,7 @@ import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 import com.google.web.bindery.requestfactory.shared.Receiver;
@@ -46,6 +50,8 @@ public class MainActivity extends AbstractActivity implements HasPlace, MainView
     @Inject
     private LabViewImpl labView;
 
+    @Inject
+    VetokitDispatcherAsync dispatcher;
 
     @Inject
     public MainActivity(AppFactory factory) {
@@ -67,11 +73,25 @@ public class MainActivity extends AbstractActivity implements HasPlace, MainView
             }
         });
 
-        //loadLaboratory();
+        loadLaboratory();
 
     }
 
     public void loadLaboratory() {
+        dispatcher.execute(new IncrementCounter(1), new AsyncCallback<IncrementCounterResult>() {
+
+            public void onFailure(Throwable caught) {
+
+
+
+            }
+
+            public void onSuccess(IncrementCounterResult result) {
+
+
+
+            }
+        });
         /*factory.greeting().greetServer("tess").fire(
                 new Receiver<GreetingResponseProxy>() {
                     public void onFailure(ServerFailure failure) {

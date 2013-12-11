@@ -1,6 +1,7 @@
 package com.ensi.vetokit.gin;
 
 
+import com.ensi.vetokit.dispatcher.VetokitDispatcherAsync;
 import com.ensi.vetokit.mvp.AppActivityMapper;
 import com.ensi.vetokit.mvp.AppPlaceController;
 import com.ensi.vetokit.mvp.AppPlaceHistoryMapper;
@@ -28,6 +29,7 @@ import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.web.bindery.requestfactory.shared.RequestTransport;
+import net.customware.gwt.dispatch.client.DispatchAsync;
 
 public class VetokitModule extends AbstractGinModule {
 
@@ -47,6 +49,7 @@ public class VetokitModule extends AbstractGinModule {
         bind(MainView.class).to(MainViewImpl.class).in(Singleton.class);
 
         bind(RequestTransport.class).to(AuthAwareRequestTransport.class);
+        bind(DispatchAsync.class).to(VetokitDispatcherAsync.class).in(Singleton.class);
     }
 
     @Singleton
