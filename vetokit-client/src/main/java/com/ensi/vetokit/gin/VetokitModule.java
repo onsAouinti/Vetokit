@@ -49,7 +49,7 @@ public class VetokitModule extends AbstractGinModule {
         bind(MainView.class).to(MainViewImpl.class).in(Singleton.class);
 
         bind(RequestTransport.class).to(AuthAwareRequestTransport.class);
-        bind(DispatchAsync.class).to(VetokitDispatcherAsync.class).in(Singleton.class);
+        bind(VetokitDispatcherAsync.class);
     }
 
     @Singleton
