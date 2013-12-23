@@ -3,15 +3,30 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 
+    <ui:with field="msg" type="com.ensi.vetokit.resources.AppMessages" />
+    <ui:style src="../Lab.css" />
+
+
     <g:HTMLPanel>
 
-       <b:CellTable ui:field="labCellTable"
-                     bordered="true" condensed="true" striped="true" />
-        <b:SimplePager  location="CENTER" display="{labCellTable}"
-                        fastForwardRows="5" />
         <b:FormActions>
-        <b:Button ui:field="addButton" icon="PLUS" >Add Laboratory</b:Button>
+            <b:Row>
+            <b:Column size="8" >
+                <b:Button ui:field="addButton" icon="PLUS">Add Laboratory</b:Button>
+            </b:Column>
+            <b:Column size="4">
+                <b:TextBox searchQuery="true" ui:field="searchTextBox" placeholder=" Entrer Raison Sociale!" />
+                <b:Button icon="SEARCH" ui:field="searchButtton"></b:Button>
+                <b:Button icon="REFRESH" ui:field="refreshButton">Refresh</b:Button>
+            </b:Column>
+            </b:Row>
+            <b:Row>
+            <b:SimplePager  location="CENTER" display="{labCellTable}" styleName="{style.pager}"
+                            fastForwardRows="5" />
+            </b:Row>
         </b:FormActions>
+         <b:CellTable ui:field="labCellTable"
+                     bordered="true" condensed="true" striped="true" />
 
     </g:HTMLPanel>
 

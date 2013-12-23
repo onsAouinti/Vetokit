@@ -57,10 +57,6 @@ public class VetokitDispatcherAsync implements DispatchAsync
      * Execute the give Action. If the Action was executed before it will get
      * fetched from the cache
      *
-     * @param Action
-     *            implementation
-     * @param Result
-     *            implementation
      * @param action
      *            the action
      * @param callback

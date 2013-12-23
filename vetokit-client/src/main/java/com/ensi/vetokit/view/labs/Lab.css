@@ -1,9 +1,12 @@
 @CHARSET "UTF-8";
 
-.pager{
-
+.addButton{
+    margin-left: 10px;
 }
-
+.pager{
+    margin-left: 500px;
+    margin-top: 5px;
+}
 .cellTable {
     border-bottom: 1px solid #ccc;
     text-align: left;

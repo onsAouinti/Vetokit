@@ -73,7 +73,7 @@ public class MainActivity extends AbstractActivity implements HasPlace, MainView
             }
         });
 
-        loadLaboratory();
+      //  loadLaboratory();
 
     }
 

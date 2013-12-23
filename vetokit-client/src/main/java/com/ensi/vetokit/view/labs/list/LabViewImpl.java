@@ -8,6 +8,7 @@ import com.github.gwtbootstrap.client.ui.*;
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.editor.client.Editor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -25,7 +26,7 @@ import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LabViewImpl extends Composite implements LabView {
+public class LabViewImpl extends Composite implements LabView{
 
     private static ViewImplUiBinder uiBinder = GWT.create(ViewImplUiBinder.class);
 
@@ -36,6 +37,12 @@ public class LabViewImpl extends Composite implements LabView {
 
     @UiField(provided=true)
     CellTable labCellTable;
+    @UiField
+    TextBox searchTextBox;
+    @UiField
+    Button searchButtton;
+    @UiField
+    Button refreshButton;
 
     @Inject
     private PopupLabView popupView;
@@ -59,9 +66,6 @@ public class LabViewImpl extends Composite implements LabView {
         popupView = new PopupLabViewImpl();
         loadLabs();
         initlaborList();
-        /*labCellTable.setRowCount(labList.size(), true);
-        labCellTable.setRowData(0, labList) */
-
         initWidget(uiBinder.createAndBindUi(this));
 
     }
@@ -257,5 +261,30 @@ public class LabViewImpl extends Composite implements LabView {
             }
         };
         popupView.showPopup(new Laboratory(),command);
+    }
+
+    @UiHandler("searchButtton")
+    public String onSearchClick(ClickEvent event) {
+        String datakey =  this.searchTextBox.getText();
+        for (Laboratory lab : labList)  {
+            if (datakey.equals(lab.getRaisonSociale()))
+            {
+                labList.clear();
+                labList.add(lab);
+                dataProvider.setList(labList);
+                dataProvider.refresh();
+                dataProvider.addDataDisplay(labCellTable);
+                rebuildPager(pagination, pager);
+                return "";
+            }
+        }
+        return "";
+    }
+
+    @UiHandler("refreshButton")
+    public void onRefreshClick(ClickEvent event) {
+        labList.clear();
+        loadLabs();
+        initlaborList();
     }
 }
