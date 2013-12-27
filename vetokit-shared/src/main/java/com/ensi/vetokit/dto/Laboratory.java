@@ -1,7 +1,9 @@
 package com.ensi.vetokit.dto;
 
 
-public class Laboratory {
+import java.io.Serializable;
+
+public class Laboratory implements Serializable {
 
     private int labId;
     private String raisonSociale;

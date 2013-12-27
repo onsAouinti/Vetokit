@@ -4,6 +4,8 @@ import com.ensi.vetokit.dto.Laboratory;
 import com.ensi.vetokit.view.socle.formitem.TextFormItem;
 import com.github.gwtbootstrap.client.ui.*;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.client.Editor;
+import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -13,10 +15,15 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 
-public class PopupLabViewImpl extends Composite implements PopupLabView {
+public class PopupLabViewImpl extends Composite implements PopupLabView, Editor<Laboratory> {
 
     interface ViewImplUiBinder extends UiBinder<Widget, PopupLabViewImpl> {
     }
+    interface Driver extends SimpleBeanEditorDriver<Laboratory, PopupLabViewImpl> {
+    }
+
+    Driver driver = GWT.create(Driver.class);
+
     private static ViewImplUiBinder uiBinder = GWT.create(ViewImplUiBinder.class);
 
     private Laboratory laboratory;
@@ -27,10 +34,10 @@ public class PopupLabViewImpl extends Composite implements PopupLabView {
     Modal modal;
 
     @UiField
-    TextFormItem raisonSocialeField;
+    TextFormItem raisonSociale;
 
     @UiField
-    TextFormItem emailField;
+    TextFormItem email;
 
     @UiField
     Button saveButton;
@@ -38,23 +45,28 @@ public class PopupLabViewImpl extends Composite implements PopupLabView {
     public PopupLabViewImpl(){
 
         initWidget(uiBinder.createAndBindUi(this));
+        driver.initialize(this);
+        driver.edit(new Laboratory());
     }
 
     public void showPopup(Laboratory laboratory, Command command) {
         this.command = command;
         this.laboratory= laboratory;
-        raisonSocialeField.setValue(laboratory.getRaisonSociale());
+        /*raisonSocialeField.setValue(laboratory.getRaisonSociale());
         emailField.setValue(laboratory.getEmail());
+        */
+        driver.edit(laboratory);
         modal.show();
 
      }
 
     @UiHandler("saveButton")
     public void onSaveClick(ClickEvent e) {
-        String newMail=emailField.getValue();
+        /*String newMail=emailField.getValue();
         String newRaisonSociale=raisonSocialeField.getValue();
         laboratory.setEmail(newMail);
-        laboratory.setRaisonSociale(newRaisonSociale);
+        laboratory.setRaisonSociale(newRaisonSociale);*/
+        laboratory= driver.flush();
         modal.hide();
         command.execute();
     }

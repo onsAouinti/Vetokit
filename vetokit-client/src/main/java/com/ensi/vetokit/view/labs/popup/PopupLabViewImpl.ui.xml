@@ -9,9 +9,9 @@
     <g:HTMLPanel>
         <b:Modal ui:field="modal" title="Update Laboratory" backdrop="STATIC" keyboard="true" animation="true">
 
-            <formitem:TextFormItem ui:field="raisonSocialeField" maxLength="50"
+            <formitem:TextFormItem ui:field="raisonSociale" maxLength="50"
                                    label="Raison Sociale" labelWidth="150px" enabled="true"/>
-            <formitem:TextFormItem ui:field="emailField" maxLength="50" label="Email"
+            <formitem:TextFormItem ui:field="email" maxLength="50" label="Email"
                                    labelWidth="150px" enabled="true"/>
             <b:ModalFooter>
                 <b:Button ui:field="saveButton" icon="OK_SIGN">Save</b:Button>
