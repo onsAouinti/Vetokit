@@ -1,6 +1,9 @@
 package com.ensi.vetokit.view.socle.formitem;
 
 import com.github.gwtbootstrap.client.ui.TextBox;
+import com.google.gwt.editor.client.EditorDelegate;
+import com.google.gwt.editor.client.HasEditorDelegate;
+import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -11,10 +14,13 @@ import com.google.gwt.user.client.ui.HasValue;
  * Champ de saisie de type {@link FormItem}, intégrant une {@link com.google.gwt.user.client.ui.TextBox}.
  */
 public abstract class AbstractTextFormItem<T extends TextBox> extends LabelFormItem<String> implements
-        ValidableComponent<String>, HasValue<String>, HasAllKeyHandlers {
+        ValidableComponent<String>, HasValue<String>, LeafValueEditor<String>, HasEditorDelegate<String>, HasAllKeyHandlers {
+
 
     /** La {@link com.google.gwt.user.client.ui.TextBox} affichée lorsque l'élément est en mode édition. */
     protected T valueTextBox;
+
+    private EditorDelegate<String> delegate;
 
     @SuppressWarnings("unchecked")
     public AbstractTextFormItem(T textbox) {
@@ -106,6 +112,11 @@ public abstract class AbstractTextFormItem<T extends TextBox> extends LabelFormI
 
     public void setEnabled(boolean enabled) {
         valueTextBox.setEnabled(enabled);
+    }
+
+    @Override
+    public void setDelegate(EditorDelegate<String> delegate) {
+        this.delegate = delegate;
     }
 
     @Override

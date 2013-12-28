@@ -26,8 +26,6 @@ public class PopupLabViewImpl extends Composite implements PopupLabView, Editor<
 
     private static ViewImplUiBinder uiBinder = GWT.create(ViewImplUiBinder.class);
 
-    private Laboratory laboratory;
-
     private Command command;
 
     @UiField
@@ -43,7 +41,6 @@ public class PopupLabViewImpl extends Composite implements PopupLabView, Editor<
     Button saveButton;
 
     public PopupLabViewImpl(){
-
         initWidget(uiBinder.createAndBindUi(this));
         driver.initialize(this);
         driver.edit(new Laboratory());
@@ -51,10 +48,6 @@ public class PopupLabViewImpl extends Composite implements PopupLabView, Editor<
 
     public void showPopup(Laboratory laboratory, Command command) {
         this.command = command;
-        this.laboratory= laboratory;
-        /*raisonSocialeField.setValue(laboratory.getRaisonSociale());
-        emailField.setValue(laboratory.getEmail());
-        */
         driver.edit(laboratory);
         modal.show();
 
@@ -62,16 +55,11 @@ public class PopupLabViewImpl extends Composite implements PopupLabView, Editor<
 
     @UiHandler("saveButton")
     public void onSaveClick(ClickEvent e) {
-        /*String newMail=emailField.getValue();
-        String newRaisonSociale=raisonSocialeField.getValue();
-        laboratory.setEmail(newMail);
-        laboratory.setRaisonSociale(newRaisonSociale);*/
-        laboratory= driver.flush();
         modal.hide();
         command.execute();
     }
 
     public Laboratory getLaboratory() {
-        return laboratory;
+        return driver.flush();
     }
 }
