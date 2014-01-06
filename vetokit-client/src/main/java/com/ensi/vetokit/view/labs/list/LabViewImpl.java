@@ -1,6 +1,7 @@
 package com.ensi.vetokit.view.labs.list;
 
 import com.ensi.vetokit.dto.Laboratory;
+import com.ensi.vetokit.view.socle.pager.Pager;
 import com.ensi.vetokit.view.labs.popup.PopupLabView;
 import com.ensi.vetokit.view.labs.popup.PopupLabViewImpl;
 import com.ensi.vetokit.view.socle.OperationsColumn;
@@ -47,7 +48,7 @@ public class LabViewImpl extends Composite implements LabView{
     @Inject
     private PopupLabView popupView;
 
-    private static final int LABS_PAGE_SIZE = 5;
+    private static final int LABS_PAGE_SIZE = 10;
 
     private TextColumn<Laboratory> raisonSocialeColumn;
     private TextColumn<Laboratory> emailColumn;
@@ -56,28 +57,38 @@ public class LabViewImpl extends Composite implements LabView{
     private List<Laboratory> labList = new ArrayList<Laboratory>();
     ListDataProvider<Laboratory> dataProvider = new ListDataProvider<Laboratory>();
 
-    Pagination pagination = new Pagination();
-    SimplePager pager = new SimplePager(SimplePager.TextLocation.CENTER, false, 0, true);
-
-    /** * The list of data to display. */
+    @UiField
+    Pager pager;
 
     @Inject
     public LabViewImpl() {
         popupView = new PopupLabViewImpl();
+        pager= new Pager();
         loadLabs();
         initlaborList();
         initWidget(uiBinder.createAndBindUi(this));
 
-    }
+  }
 
     public void setPresenter(final Presenter listener) {
         presenter = listener;
 
     }
     public void loadLabs(){
+
         Laboratory lab1 = new Laboratory();
         Laboratory lab2 = new Laboratory();
         Laboratory lab3 = new Laboratory();
+        Laboratory lab4 = new Laboratory();
+        Laboratory lab5 = new Laboratory();
+        Laboratory lab6 = new Laboratory();
+        Laboratory lab7 = new Laboratory();
+        Laboratory lab8 = new Laboratory();
+        Laboratory lab9 = new Laboratory();
+        Laboratory lab10 = new Laboratory();
+        Laboratory lab11 = new Laboratory();
+        Laboratory lab12 = new Laboratory();
+        Laboratory lab13 = new Laboratory();
 
         lab1.setRaisonSociale("Ons");
         lab1.setEmail("ons.aouinti@gmail.com");
@@ -88,9 +99,49 @@ public class LabViewImpl extends Composite implements LabView{
         lab3.setRaisonSociale("Ahmed");
         lab3.setEmail("ahmed.aouinti@gmail.com");
 
+        lab4.setRaisonSociale("Ons");
+        lab4.setEmail("ons.aouinti@gmail.com");
+
+        lab5.setRaisonSociale("Aymen");
+        lab5.setEmail("aymen.kadri@gmail.com");
+
+        lab6.setRaisonSociale("Ahmed");
+        lab6.setEmail("ahmed.aouinti@gmail.com");
+
+        lab7.setRaisonSociale("Ons");
+        lab7.setEmail("ons.aouinti@gmail.com");
+
+        lab8.setRaisonSociale("Aymen");
+        lab8.setEmail("aymen.kadri@gmail.com");
+
+        lab9.setRaisonSociale("Ahmed");
+        lab9.setEmail("ahmed.aouinti@gmail.com");
+
+        lab10.setRaisonSociale("Salma");
+        lab10.setEmail("salma.aouinti@gmail.com");
+
+        lab11.setRaisonSociale("hihi");
+        lab11.setEmail("hihi.kadri@gmail.com");
+
+        lab12.setRaisonSociale("hahah");
+        lab12.setEmail("hahah.aouinti@gmail.com");
+
+        lab13.setRaisonSociale("hohoh");
+        lab13.setEmail("hohoh.aouinti@gmail.com");
+
         labList.add(lab1);
         labList.add(lab2);
         labList.add(lab3);
+        labList.add(lab4);
+        labList.add(lab5);
+        labList.add(lab6);
+        labList.add(lab7);
+        labList.add(lab8);
+        labList.add(lab9);
+        labList.add(lab10);
+        labList.add(lab11);
+        labList.add(lab12);
+        labList.add(lab13);
         dataProvider.setList(labList);
     }
 
@@ -125,14 +176,12 @@ public class LabViewImpl extends Composite implements LabView{
         labCellTable.addRangeChangeHandler(new RangeChangeEvent.Handler() {
 
             public void onRangeChange(RangeChangeEvent event) {
-                rebuildPager(pagination, pager);
+                pager.rebuild();
             }
         });
 
         labCellTable.addColumn(laboratoryOperationsColumn, "Operations");
-
         pager.setDisplay(labCellTable);
-        pagination.clear();
         dataProvider.addDataDisplay(labCellTable);
 
         //Definition des largeurs de colonnes fixes
@@ -149,16 +198,12 @@ public class LabViewImpl extends Composite implements LabView{
     }
 
     public void deleteLaboratory(Laboratory laboratory) {
-        /*labList.remove(laboratory);
-        labCellTable.setRowCount(labList.size(), true);
-        labCellTable.setRowData(0, labList);
-        rebuildPager(pagination, pager);*/
         dataProvider.getList().remove(laboratory);
         dataProvider.flush();
         dataProvider.refresh();
         labCellTable.setRowCount(labList.size(), true);
         dataProvider.addDataDisplay(labCellTable);
-        rebuildPager(pagination, pager);
+        pager.rebuild();
     }
 
     public void editLaboratory(final Laboratory laboratory){
@@ -166,87 +211,13 @@ public class LabViewImpl extends Composite implements LabView{
             public void execute() {
                 int i = labList.indexOf(laboratory);
                Laboratory lab =  popupView.getLaboratory();
-               labList.set(i,lab);
+               labList.set(i, lab);
                dataProvider.refresh();
                dataProvider.addDataDisplay(labCellTable);
-               rebuildPager(pagination, pager);
+              /* pager.rebuild();*/
             }
         };
         popupView.showPopup(laboratory, command);
-    }
-
-    private void rebuildPager(final Pagination pagination,final SimplePager pager) {
-        pagination.clear();
-
-        if (pager.getPageCount() == 0) {
-            return;
-        }
-
-        NavLink prev = new NavLink("<");
-
-        prev.addClickHandler(new ClickHandler() {
-
-            public void onClick(ClickEvent event) {
-                GWT.log(String.valueOf("prev"));
-                pager.previousPage();
-            }
-        });
-
-        prev.setDisabled(!pager.hasPreviousPage());
-
-        pagination.add(prev);
-
-        int before = 2;
-        int after = 2;
-
-        while (!pager.hasPreviousPages(before) && before > 0) {
-            before--;
-            if(pager.hasNextPages(after + 1)) {
-                after++;
-            }
-        }
-
-
-        while (!pager.hasNextPages(after) && after > 0) {
-            after--;
-            if(pager.hasPreviousPages(before+1)) {
-                before++;
-            }
-        }
-
-        for (int i = pager.getPage() - before; i <= pager.getPage() + after; i++) {
-
-            final int index = i + 1;
-
-            NavLink page = new NavLink(String.valueOf(index));
-
-            page.addClickHandler(new ClickHandler() {
-
-                public void onClick(ClickEvent event) {
-                    pager.setPage(index - 1);
-                }
-            });
-
-            if (i == pager.getPage()) {
-                page.setActive(true);
-            }
-
-            pagination.add(page);
-        }
-
-        NavLink next = new NavLink(">");
-
-        next.addClickHandler(new ClickHandler() {
-
-            public void onClick(ClickEvent event) {
-                GWT.log(String.valueOf("next"));
-                pager.nextPage();
-            }
-        });
-
-        next.setDisabled(!pager.hasNextPage());
-
-        pagination.add(next);
     }
 
     @UiHandler("addButton")
@@ -257,7 +228,7 @@ public class LabViewImpl extends Composite implements LabView{
                 labList.add(lab);
                 dataProvider.refresh();
                 dataProvider.addDataDisplay(labCellTable);
-                rebuildPager(pagination, pager);
+                pager.rebuild();
             }
         };
         popupView.showPopup(new Laboratory(),command);
@@ -274,7 +245,7 @@ public class LabViewImpl extends Composite implements LabView{
                 dataProvider.setList(labList);
                 dataProvider.refresh();
                 dataProvider.addDataDisplay(labCellTable);
-                rebuildPager(pagination, pager);
+                pager.rebuild();
                 return "";
             }
         }

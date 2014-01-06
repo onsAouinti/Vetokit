@@ -12,6 +12,16 @@ public interface AppMessages extends Messages {
     String menuHome();
     String menuDisconnection();
     String menuLaboratory();
-
     String settings();
+
+    //Button
+    String addButton();
+    String refreshButton();
+    String saveButton();
+
+    //Label
+    String raisonSociale();
+    String email();
+    String labModal();
+    String searchTextBox();
 }

@@ -1,7 +1,8 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+             xmlns:pager="urn:import:com.ensi.vetokit.view.socle.pager">
 
     <ui:with field="msg" type="com.ensi.vetokit.resources.AppMessages" />
     <ui:style src="../Lab.css" />
@@ -11,22 +12,20 @@
 
         <b:FormActions>
             <b:Row>
-            <b:Column size="8" >
-                <b:Button ui:field="addButton" icon="PLUS">Add Laboratory</b:Button>
-            </b:Column>
-            <b:Column size="4">
-                <b:TextBox searchQuery="true" ui:field="searchTextBox" placeholder=" Entrer Raison Sociale!" />
-                <b:Button icon="SEARCH" ui:field="searchButtton"></b:Button>
-                <b:Button icon="REFRESH" ui:field="refreshButton">Refresh</b:Button>
-            </b:Column>
-            </b:Row>
-            <b:Row>
-            <b:SimplePager  location="CENTER" display="{labCellTable}" styleName="{style.pager}"
-                            fastForwardRows="5" />
+                <b:Column size="8" >
+                    <b:Button ui:field="addButton" icon="PLUS" text="{msg.addButton}" />
+                </b:Column>
+                <b:Column size="4">
+                    <b:TextBox searchQuery="true" ui:field="searchTextBox" placeholder="{msg.searchTextBox}" />
+                    <b:Button icon="SEARCH" ui:field="searchButtton"></b:Button>
+                    <b:Button icon="REFRESH" ui:field="refreshButton" text="{msg.refreshButton}" />
+                </b:Column>
             </b:Row>
         </b:FormActions>
-         <b:CellTable ui:field="labCellTable"
-                     bordered="true" condensed="true" striped="true" />
+        <b:CellTable ui:field="labCellTable"  bordered="true" condensed="true" striped="true" />
+        <b:Row>
+            <pager:Pager ui:field="pager" display="{labCellTable}" styleName="{style.pager}" />
+        </b:Row>
 
     </g:HTMLPanel>
 
